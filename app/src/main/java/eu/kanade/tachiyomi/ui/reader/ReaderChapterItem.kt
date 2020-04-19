@@ -107,12 +107,6 @@ class ReaderChapterItem(val chapter: Chapter, val manga: Manga, val isCurrent: B
                 }
             )
 
-            chapterSubtitle.typeface = when {
-                item.isCurrent -> activeTypeFace
-                chapter.bookmark -> bookmarkTypeFace
-                else -> inactiveTypeFace
-            }
-
             chapterSubtitle.setTextColor(
                 when {
                     item.isCurrent -> activeColor

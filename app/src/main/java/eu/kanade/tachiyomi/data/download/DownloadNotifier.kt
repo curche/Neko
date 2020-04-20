@@ -3,13 +3,13 @@ package eu.kanade.tachiyomi.data.download
 import android.content.Context
 import android.graphics.BitmapFactory
 import androidx.core.app.NotificationCompat
-import androidx.core.content.ContextCompat
 import eu.kanade.tachiyomi.R
 import eu.kanade.tachiyomi.data.download.model.Download
 import eu.kanade.tachiyomi.data.notification.NotificationHandler
 import eu.kanade.tachiyomi.data.notification.NotificationReceiver
 import eu.kanade.tachiyomi.data.notification.Notifications
 import eu.kanade.tachiyomi.util.lang.chop
+import eu.kanade.tachiyomi.util.system.getResourceColor
 import eu.kanade.tachiyomi.util.system.notificationManager
 import java.util.regex.Pattern
 
@@ -104,7 +104,7 @@ internal class DownloadNotifier(private val context: Context) {
                 )
                 setContentText(null)
             }
-            color = ContextCompat.getColor(context, R.color.colorAccent)
+            color = context.getResourceColor(R.attr.colorPrimary)
             setProgress(0, 0, true)
             setStyle(null)
         }
@@ -230,7 +230,7 @@ internal class DownloadNotifier(private val context: Context) {
             clearActions()
             setAutoCancel(true)
             setContentIntent(NotificationHandler.openDownloadManagerPendingActivity(context))
-            color = ContextCompat.getColor(context, R.color.colorAccent)
+            color = context.getResourceColor(R.attr.colorPrimary)
             setProgress(0, 0, false)
         }
         notification.show(Notifications.ID_DOWNLOAD_CHAPTER_ERROR)

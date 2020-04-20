@@ -20,7 +20,7 @@ import kotlinx.android.synthetic.main.tracking_bottom_sheet.*
 import timber.log.Timber
 
 class TrackingBottomSheet(private val controller: MangaDetailsController) : BottomSheetDialog
-    (controller.activity!!, R.style.BottomSheetDialogTheme),
+    (controller.activity!!),
     TrackAdapter.OnClickListener,
     SetTrackStatusDialog.Listener,
     SetTrackChaptersDialog.Listener,
@@ -45,7 +45,7 @@ class TrackingBottomSheet(private val controller: MangaDetailsController) : Bott
         sheetBehavior.peekHeight = 380.dpToPx + height
 
         sheetBehavior.addBottomSheetCallback(object : BottomSheetBehavior.BottomSheetCallback() {
-            override fun onSlide(bottomSheet: View, progress: Float) { }
+            override fun onSlide(bottomSheet: View, progress: Float) {}
 
             override fun onStateChanged(p0: View, state: Int) {
                 if (state == BottomSheetBehavior.STATE_EXPANDED) {

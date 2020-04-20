@@ -45,18 +45,13 @@ class ChapterHolder(
         chapter_title.setTextColor(
             if (chapter.read && !isLocked) adapter.readColor else adapter.unreadColor
         )
-        if (chapter.bookmark && !isLocked) {
-            chapter_title.setTextColor(adapter.bookmarkedColor)
-            chapter_title.typeface = ResourcesCompat.getFont(
-                view.context,
-                R.font.metropolis_extra_bold
-            )
-        } else {
-            chapter_title.typeface = ResourcesCompat.getFont(
-                view.context,
-                R.font.metropolis_regular
-            )
+        val fontInt = when {
+            chapter.bookmark && !isLocked -> R.font.metropolis_extra_bold
+            chapter.read && !isLocked -> R.font.metropolis_regular
+            else -> R.font.metropolis_medium
+
         }
+        chapter_title.typeface = ResourcesCompat.getFont(view.context, fontInt)
 
         val statuses = mutableListOf<String>()
 

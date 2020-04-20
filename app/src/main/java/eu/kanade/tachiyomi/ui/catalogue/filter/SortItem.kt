@@ -13,7 +13,8 @@ import eu.kanade.tachiyomi.R
 import eu.kanade.tachiyomi.source.model.Filter
 import eu.kanade.tachiyomi.util.system.getResourceColor
 
-class SortItem(val name: String, val group: SortGroup) : AbstractSectionableItem<SortItem.Holder, SortGroup>(group) {
+class SortItem(val name: String, val group: SortGroup) :
+    AbstractSectionableItem<SortItem.Holder, SortGroup>(group) {
 
     override fun getLayoutRes(): Int {
         return R.layout.navigation_view_checkedtext
@@ -23,11 +24,19 @@ class SortItem(val name: String, val group: SortGroup) : AbstractSectionableItem
         return 102
     }
 
-    override fun createViewHolder(view: View, adapter: FlexibleAdapter<IFlexible<RecyclerView.ViewHolder>>): Holder {
+    override fun createViewHolder(
+        view: View,
+        adapter: FlexibleAdapter<IFlexible<RecyclerView.ViewHolder>>
+    ): Holder {
         return Holder(view, adapter)
     }
 
-    override fun bindViewHolder(adapter: FlexibleAdapter<IFlexible<RecyclerView.ViewHolder>>, holder: Holder, position: Int, payloads: MutableList<Any?>?) {
+    override fun bindViewHolder(
+        adapter: FlexibleAdapter<IFlexible<RecyclerView.ViewHolder>>,
+        holder: Holder,
+        position: Int,
+        payloads: MutableList<Any?>?
+    ) {
         val view = holder.text
         view.text = name
         val filter = group.filter
@@ -35,10 +44,18 @@ class SortItem(val name: String, val group: SortGroup) : AbstractSectionableItem
         val i = filter.values.indexOf(name)
 
         fun getIcon() = when (filter.state) {
-            Filter.Sort.Selection(i, false) -> VectorDrawableCompat.create(view.resources, R.drawable.ic_arrow_down_white_32dp, null)
-                    ?.apply { setTint(view.context.getResourceColor(R.attr.colorAccent)) }
-            Filter.Sort.Selection(i, true) -> VectorDrawableCompat.create(view.resources, R.drawable.ic_arrow_up_white_32dp, null)
-                    ?.apply { setTint(view.context.getResourceColor(R.attr.colorAccent)) }
+            Filter.Sort.Selection(i, false) -> VectorDrawableCompat.create(
+                view.resources,
+                R.drawable.ic_arrow_down_white_32dp,
+                null
+            )
+                ?.apply { setTint(view.context.getResourceColor(R.attr.colorOnBackground)) }
+            Filter.Sort.Selection(i, true) -> VectorDrawableCompat.create(
+                view.resources,
+                R.drawable.ic_arrow_up_white_32dp,
+                null
+            )
+                ?.apply { setTint(view.context.getResourceColor(R.attr.colorOnBackground)) }
             else -> ContextCompat.getDrawable(view.context, R.drawable.empty_drawable_32dp)
         }
 
@@ -68,7 +85,8 @@ class SortItem(val name: String, val group: SortGroup) : AbstractSectionableItem
         return result
     }
 
-    class Holder(view: View, adapter: FlexibleAdapter<IFlexible<RecyclerView.ViewHolder>>) : FlexibleViewHolder(view, adapter) {
+    class Holder(view: View, adapter: FlexibleAdapter<IFlexible<RecyclerView.ViewHolder>>) :
+        FlexibleViewHolder(view, adapter) {
 
         val text: CheckedTextView = itemView.findViewById(R.id.nav_view_item)
     }

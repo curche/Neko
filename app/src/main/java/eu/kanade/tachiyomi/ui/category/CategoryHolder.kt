@@ -23,7 +23,8 @@ import kotlinx.android.synthetic.main.categories_item.*
  * @param view The view used by category items.
  * @param adapter The adapter containing this holder.
  */
-class CategoryHolder(view: View, val adapter: CategoryAdapter) : BaseFlexibleViewHolder(view, adapter) {
+class CategoryHolder(view: View, val adapter: CategoryAdapter) :
+    BaseFlexibleViewHolder(view, adapter) {
 
     init {
         edit_button.setOnClickListener {
@@ -50,17 +51,21 @@ class CategoryHolder(view: View, val adapter: CategoryAdapter) : BaseFlexibleVie
         }
         createCategory = category.order == CREATE_CATEGORY_ORDER
         if (createCategory) {
-            title.setTextColor(ContextCompat.getColor(itemView.context, R.color.textColorHint))
-            regularDrawable = ContextCompat.getDrawable(itemView.context, R.drawable
-                .ic_add_white_24dp)
+            title.setTextColor(itemView.context.getResourceColor(R.attr.colorSecondary))
+            regularDrawable = ContextCompat.getDrawable(
+                itemView.context, R.drawable
+                    .ic_add_white_24dp
+            )
             image.gone()
             edit_button.setImageDrawable(null)
             edit_text.setText("")
             edit_text.hint = title.text
         } else {
-            title.setTextColor(ContextCompat.getColor(itemView.context, R.color.textColorPrimary))
-            regularDrawable = ContextCompat.getDrawable(itemView.context, R.drawable
-                .ic_reorder_grey_24dp)
+            title.setTextColor(itemView.context.getResourceColor(R.attr.colorOnBackground))
+            regularDrawable = ContextCompat.getDrawable(
+                itemView.context, R.drawable
+                    .ic_reorder_grey_24dp
+            )
             image.visible()
             edit_text.setText(title.text)
         }
@@ -74,8 +79,14 @@ class CategoryHolder(view: View, val adapter: CategoryAdapter) : BaseFlexibleVie
             edit_text.inputType = InputType.TYPE_TEXT_FLAG_AUTO_CORRECT
             edit_text.requestFocus()
             edit_text.selectAll()
-            edit_button.setImageDrawable(ContextCompat.getDrawable(itemView.context, R.drawable.ic_check_white_24dp))
-            edit_button.drawable.mutate().setTint(itemView.context.getResourceColor(R.attr.colorAccent))
+            edit_button.setImageDrawable(
+                ContextCompat.getDrawable(
+                    itemView.context,
+                    R.drawable.ic_check_white_24dp
+                )
+            )
+            edit_button.drawable.mutate()
+                .setTint(itemView.context.getResourceColor(R.attr.colorAccent))
             showKeyboard()
             if (!createCategory) {
                 reorder.setImageDrawable(
@@ -90,14 +101,23 @@ class CategoryHolder(view: View, val adapter: CategoryAdapter) : BaseFlexibleVie
         } else {
             if (!createCategory) {
                 setDragHandleView(reorder)
-                edit_button.setImageDrawable(ContextCompat.getDrawable(itemView.context, R.drawable.ic_edit_white_24dp))
+                edit_button.setImageDrawable(
+                    ContextCompat.getDrawable(
+                        itemView.context,
+                        R.drawable.ic_edit_white_24dp
+                    )
+                )
             } else {
                 edit_button.setImageDrawable(null)
                 reorder.setOnTouchListener { _, _ -> true }
             }
             edit_text.clearFocus()
-            edit_button.drawable?.mutate()?.setTint(ContextCompat.getColor(itemView.context, R
-                .color.gray_button))
+            edit_button.drawable?.mutate()?.setTint(
+                ContextCompat.getColor(
+                    itemView.context, R
+                        .color.gray_button
+                )
+            )
             reorder.setImageDrawable(regularDrawable)
         }
     }
@@ -105,7 +125,8 @@ class CategoryHolder(view: View, val adapter: CategoryAdapter) : BaseFlexibleVie
     private fun submitChanges() {
         if (edit_text.visibility == View.VISIBLE) {
             if (adapter.categoryItemListener
-                    .onCategoryRename(adapterPosition, edit_text.text.toString())) {
+                    .onCategoryRename(adapterPosition, edit_text.text.toString())
+            ) {
                 isEditing(false)
                 edit_text.inputType = InputType.TYPE_NULL
                 if (!createCategory)
@@ -119,8 +140,10 @@ class CategoryHolder(view: View, val adapter: CategoryAdapter) : BaseFlexibleVie
     private fun showKeyboard() {
         val inputMethodManager: InputMethodManager =
             itemView.context.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
-        inputMethodManager.showSoftInput(edit_text, WindowManager.LayoutParams
-            .SOFT_INPUT_ADJUST_PAN)
+        inputMethodManager.showSoftInput(
+            edit_text, WindowManager.LayoutParams
+                .SOFT_INPUT_ADJUST_PAN
+        )
     }
 
     /**

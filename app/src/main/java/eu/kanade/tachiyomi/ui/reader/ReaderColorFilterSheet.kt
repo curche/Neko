@@ -29,7 +29,7 @@ import kotlin.math.abs
  * Color filter sheet to toggle custom filter and brightness overlay.
  */
 class ReaderColorFilterSheet(activity: ReaderActivity) : BottomSheetDialog
-    (activity, R.style.BottomSheetDialogTheme) {
+    (activity) {
 
     private val preferences by injectLazy<PreferencesHelper>()
 
@@ -59,7 +59,8 @@ class ReaderColorFilterSheet(activity: ReaderActivity) : BottomSheetDialog
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O &&
             preferences.readerTheme().getOrDefault() == 0 &&
             activity.window.decorView.rootWindowInsets.systemWindowInsetRight == 0 &&
-            activity.window.decorView.rootWindowInsets.systemWindowInsetLeft == 0)
+            activity.window.decorView.rootWindowInsets.systemWindowInsetLeft == 0
+        )
             window?.decorView?.systemUiVisibility = View.SYSTEM_UI_FLAG_LIGHT_NAVIGATION_BAR
         setBottomEdge(brightness_seekbar, activity)
 
@@ -237,19 +238,20 @@ class ReaderColorFilterSheet(activity: ReaderActivity) : BottomSheetDialog
      * From 1 to 100 it sets that value as brightness.
      * 0 sets system brightness and hides the overlay.
      */
-    private fun setCustomBrightnessValue(value: Int, view: View, isDisabled: Boolean = false) = with(view) {
-        // Set black overlay visibility.
-        if (value < 0) {
-            brightness_overlay.visibility = View.VISIBLE
-            val alpha = (abs(value) * 2.56).toInt()
-            brightness_overlay.setBackgroundColor(Color.argb(alpha, 0, 0, 0))
-        } else {
-            brightness_overlay.visibility = View.GONE
-        }
+    private fun setCustomBrightnessValue(value: Int, view: View, isDisabled: Boolean = false) =
+        with(view) {
+            // Set black overlay visibility.
+            if (value < 0) {
+                brightness_overlay.visibility = View.VISIBLE
+                val alpha = (abs(value) * 2.56).toInt()
+                brightness_overlay.setBackgroundColor(Color.argb(alpha, 0, 0, 0))
+            } else {
+                brightness_overlay.visibility = View.GONE
+            }
 
-        if (!isDisabled)
-            txt_brightness_seekbar_value.text = value.toString()
-    }
+            if (!isDisabled)
+                txt_brightness_seekbar_value.text = value.toString()
+        }
 
     /**
      * Manages the color filter value subscription

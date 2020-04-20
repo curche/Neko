@@ -766,7 +766,7 @@ class MangaDetailsController : BaseController,
         menu.findItem(R.id.remove_non_bookmarked).isVisible =
             presenter.hasBookmark() && !presenter.isLockedFromSearch
         menu.findItem(R.id.action_mark_all_as_unread).isVisible = presenter.isTracked()
-        val iconPrimary = view?.context?.getResourceColor(android.R.attr.textColorPrimary)
+        val iconPrimary = view?.context?.getResourceColor(R.attr.colorOnBackground)
             ?: Color.BLACK
         menu.findItem(R.id.action_download).icon?.mutate()?.setTint(iconPrimary)
 

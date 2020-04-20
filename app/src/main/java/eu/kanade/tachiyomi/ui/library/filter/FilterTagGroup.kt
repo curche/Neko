@@ -1,12 +1,12 @@
 package eu.kanade.tachiyomi.ui.library.filter
 
 import android.content.Context
-import android.graphics.Color
 import android.util.AttributeSet
 import android.view.View
 import android.view.ViewGroup
 import android.widget.LinearLayout
 import com.f2prateek.rx.preferences.Preference
+import eu.kanade.tachiyomi.R
 import eu.kanade.tachiyomi.data.preference.getOrDefault
 import eu.kanade.tachiyomi.util.system.dpToPx
 import eu.kanade.tachiyomi.util.system.getResourceColor
@@ -14,8 +14,9 @@ import eu.kanade.tachiyomi.util.view.gone
 import eu.kanade.tachiyomi.util.view.visible
 import kotlinx.android.synthetic.main.filter_buttons.view.*
 
-class FilterTagGroup@JvmOverloads constructor(context: Context, attrs: AttributeSet? = null) : LinearLayout
-    (context, attrs) {
+class FilterTagGroup @JvmOverloads constructor(context: Context, attrs: AttributeSet? = null) :
+    LinearLayout
+        (context, attrs) {
 
     private var listener: FilterTagGroupListener? = null
 
@@ -45,7 +46,7 @@ class FilterTagGroup@JvmOverloads constructor(context: Context, attrs: Attribute
         firstText: String,
         secondText: String? = null,
         thirdText: String? =
-                null
+            null
     ) {
         listener = root as? FilterTagGroupListener
         (layoutParams as? MarginLayoutParams)?.rightMargin = 5.dpToPx
@@ -92,7 +93,7 @@ class FilterTagGroup@JvmOverloads constructor(context: Context, attrs: Attribute
         }
         for (i in 0 until itemCount) {
             buttons[i].visible()
-            buttons[i].setTextColor(context.getResourceColor(android.R.attr.textColorPrimary))
+            buttons[i].setTextColor(context.getResourceColor(R.attr.colorPrimary))
         }
         for (i in 0 until (itemCount - 1)) separators[i].visible()
     }
@@ -108,8 +109,10 @@ class FilterTagGroup@JvmOverloads constructor(context: Context, attrs: Attribute
         }
         if (itemCount == 1) {
             firstButton.isActivated = !firstButton.isActivated
-            firstButton.setTextColor(if (firstButton.isActivated) Color.WHITE else context
-                .getResourceColor(android.R.attr.textColorPrimary))
+            firstButton.setTextColor(
+                context
+                    .getResourceColor(if (firstButton.isActivated) R.attr.colorOnPrimary else R.attr.colorPrimary)
+            )
             listener?.onFilterClicked(this, if (firstButton.isActivated) index else -1, callBack)
             return
         }
@@ -135,8 +138,10 @@ class FilterTagGroup@JvmOverloads constructor(context: Context, attrs: Attribute
                 separator2.gone()
             }
         }
-        mainButton.setTextColor(if (mainButton.isActivated) Color.WHITE else context
-            .getResourceColor(android.R.attr.textColorPrimary))
+        mainButton.setTextColor(
+            context
+                .getResourceColor(if (mainButton.isActivated) R.attr.colorOnPrimary else R.attr.colorPrimary)
+        )
     }
 }
 

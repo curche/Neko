@@ -74,7 +74,7 @@
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/title"
-            style="@style/TextAppearance.Regular.Body1.SemiBold"
+            style="@style/TextAppearance.MyTheme.Headline6"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="12dp"
@@ -181,6 +181,6 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             android:layout_marginStart="10dp"
-            android:background="?android:attr/divider"/>
+            android:background="?android:attr/divider" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </FrameLayout>

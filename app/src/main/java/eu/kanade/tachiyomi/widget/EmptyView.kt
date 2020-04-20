@@ -5,12 +5,11 @@ import android.util.AttributeSet
 import android.view.View
 import android.widget.RelativeLayout
 import eu.kanade.tachiyomi.R
-import eu.kanade.tachiyomi.util.system.getResourceColor
 import eu.kanade.tachiyomi.util.view.setVectorCompat
 import kotlinx.android.synthetic.main.common_view_empty.view.*
 
 class EmptyView @JvmOverloads constructor(context: Context, attrs: AttributeSet? = null) :
-        RelativeLayout(context, attrs) {
+    RelativeLayout(context, attrs) {
 
     init {
         inflate(context, R.layout.common_view_empty, this)
@@ -29,7 +28,10 @@ class EmptyView @JvmOverloads constructor(context: Context, attrs: AttributeSet?
      * @param textResource text of information view
      */
     fun show(drawable: Int, textResource: Int) {
-        image_view.setVectorCompat(drawable, context.getResourceColor(android.R.attr.textColorHint))
+        image_view.setVectorCompat(
+            drawable,
+            context.getColor(R.color.material_on_background_emphasis_medium)
+        )
         text_label.text = context.getString(textResource)
         this.visibility = View.VISIBLE
     }

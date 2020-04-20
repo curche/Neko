@@ -32,7 +32,7 @@ class TrackLoginDialog(usernameLabel: String? = null, bundle: Bundle? = null) :
     override fun checkLogin() {
 
         v?.apply {
-            if (username.text.isEmpty() || password.text.isEmpty())
+            if (username.text!!.isEmpty() || password.text!!.isEmpty())
                 return
 
             login.progress = 1

@@ -24,25 +24,31 @@ open class TriStateItem(val filter: Filter.TriState) : AbstractFlexibleItem<TriS
         return 103
     }
 
-    override fun createViewHolder(view: View, adapter: FlexibleAdapter<IFlexible<RecyclerView.ViewHolder>>): Holder {
+    override fun createViewHolder(
+        view: View,
+        adapter: FlexibleAdapter<IFlexible<RecyclerView.ViewHolder>>
+    ): Holder {
         return Holder(view, adapter)
     }
 
-    override fun bindViewHolder(adapter: FlexibleAdapter<IFlexible<RecyclerView.ViewHolder>>, holder: Holder, position: Int, payloads: MutableList<Any?>?) {
+    override fun bindViewHolder(
+        adapter: FlexibleAdapter<IFlexible<RecyclerView.ViewHolder>>,
+        holder: Holder,
+        position: Int,
+        payloads: MutableList<Any?>?
+    ) {
         val view = holder.text
         view.text = filter.name
 
-        fun getIcon() = VectorDrawableCompat.create(view.resources, when (filter.state) {
-            Filter.TriState.STATE_IGNORE -> TR.drawable.ic_check_box_outline_blank_24dp
-            Filter.TriState.STATE_INCLUDE -> TR.drawable.ic_check_box_24dp
-            Filter.TriState.STATE_EXCLUDE -> TR.drawable.ic_check_box_x_24dp
-            else -> throw Exception("Unknown state")
-        }, null)?.apply {
-            val color = if (filter.state == Filter.TriState.STATE_INCLUDE)
-                R.attr.colorAccent
-            else
-                android.R.attr.textColorSecondary
-
+        fun getIcon() = VectorDrawableCompat.create(
+            view.resources, when (filter.state) {
+                Filter.TriState.STATE_IGNORE -> TR.drawable.ic_check_box_outline_blank_24dp
+                Filter.TriState.STATE_INCLUDE -> TR.drawable.ic_check_box_24dp
+                Filter.TriState.STATE_EXCLUDE -> TR.drawable.ic_check_box_x_24dp
+                else -> throw Exception("Unknown state")
+            }, null
+        )?.apply {
+            val color = R.attr.colorPrimary
             setTint(view.context.getResourceColor(color))
         }
 
@@ -63,7 +69,8 @@ open class TriStateItem(val filter: Filter.TriState) : AbstractFlexibleItem<TriS
         return filter.hashCode()
     }
 
-    class Holder(view: View, adapter: FlexibleAdapter<IFlexible<RecyclerView.ViewHolder>>) : FlexibleViewHolder(view, adapter) {
+    class Holder(view: View, adapter: FlexibleAdapter<IFlexible<RecyclerView.ViewHolder>>) :
+        FlexibleViewHolder(view, adapter) {
 
         val text: CheckedTextView = itemView.findViewById(TR.id.nav_view_item)
 

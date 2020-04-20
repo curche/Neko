@@ -22,7 +22,7 @@ import uy.kohesive.injekt.api.get
 class ReaderPageSheet(
     private val activity: ReaderActivity,
     private val page: ReaderPage
-) : BottomSheetDialog(activity, R.style.BottomSheetDialogTheme) {
+) : BottomSheetDialog(activity) {
 
     /**
      * View used on this sheet.
@@ -36,7 +36,8 @@ class ReaderPageSheet(
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O &&
             Injekt.get<PreferencesHelper>().readerTheme().getOrDefault() == 0 &&
             activity.window.decorView.rootWindowInsets.systemWindowInsetRight == 0 &&
-            activity.window.decorView.rootWindowInsets.systemWindowInsetLeft == 0)
+            activity.window.decorView.rootWindowInsets.systemWindowInsetLeft == 0
+        )
             window?.decorView?.systemUiVisibility = View.SYSTEM_UI_FLAG_LIGHT_NAVIGATION_BAR
 
         setBottomEdge(save_layout, activity)

@@ -3,7 +3,6 @@ package eu.kanade.tachiyomi.util.system
 import android.content.Context
 import android.graphics.BitmapFactory
 import androidx.core.app.NotificationCompat
-import androidx.core.content.ContextCompat
 import eu.kanade.tachiyomi.R
 
 fun NotificationCompat.Builder.customize(
@@ -19,7 +18,7 @@ fun NotificationCompat.Builder.customize(
     if (ongoing) {
         setOngoing(true)
     }
-    setColor(ContextCompat.getColor(context, R.color.colorPrimary))
+    setColor(context.getResourceColor(R.attr.colorPrimary))
     setOnlyAlertOnce(true)
     return this
 }

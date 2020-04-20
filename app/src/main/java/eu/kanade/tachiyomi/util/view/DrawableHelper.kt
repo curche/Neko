@@ -3,7 +3,10 @@ package eu.kanade.tachiyomi.util.view
 import android.content.Context
 import com.mikepenz.iconics.IconicsDrawable
 import com.mikepenz.iconics.typeface.IIcon
+import com.mikepenz.iconics.utils.colorInt
 import com.mikepenz.iconics.utils.sizeDp
+import eu.kanade.tachiyomi.R
+import eu.kanade.tachiyomi.util.system.getResourceColor
 
 class DrawableHelper {
 
@@ -14,6 +17,10 @@ class DrawableHelper {
         fun standardIcon20(context: Context, icon: IIcon) = icon(context, icon, 20)
         fun standardIcon18(context: Context, icon: IIcon) = icon(context, icon, 18)
 
-        private fun icon(context: Context, icon: IIcon, dp: Int) = IconicsDrawable(context, icon).apply { sizeDp = dp }
+        private fun icon(context: Context, icon: IIcon, dp: Int) =
+            IconicsDrawable(context, icon).apply {
+                sizeDp = dp
+                colorInt = context.getResourceColor(R.attr.colorOnBackground)
+            }
     }
 }

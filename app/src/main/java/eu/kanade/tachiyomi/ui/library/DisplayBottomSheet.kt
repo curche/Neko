@@ -20,7 +20,7 @@ import kotlinx.android.synthetic.main.display_bottom_sheet.*
 import uy.kohesive.injekt.injectLazy
 
 class DisplayBottomSheet(private val controller: LibraryController) : BottomSheetDialog
-    (controller.activity!!, R.style.BottomSheetDialogTheme) {
+    (controller.activity!!) {
 
     val activity = controller.activity!!
 
@@ -42,7 +42,7 @@ class DisplayBottomSheet(private val controller: LibraryController) : BottomShee
         sheetBehavior.peekHeight = 220.dpToPx + height
 
         sheetBehavior.addBottomSheetCallback(object : BottomSheetBehavior.BottomSheetCallback() {
-            override fun onSlide(bottomSheet: View, progress: Float) { }
+            override fun onSlide(bottomSheet: View, progress: Float) {}
 
             override fun onStateChanged(p0: View, state: Int) {
                 if (state == BottomSheetBehavior.STATE_EXPANDED) {
@@ -104,7 +104,10 @@ class DisplayBottomSheet(private val controller: LibraryController) : BottomShee
     /**
      * Binds a checkbox or switch view with a boolean preference.
      */
-    private fun CompoundButton.bindToPreference(pref: Preference<Boolean>, block: (() -> Unit)? = null) {
+    private fun CompoundButton.bindToPreference(
+        pref: Preference<Boolean>,
+        block: (() -> Unit)? = null
+    ) {
         isChecked = pref.getOrDefault()
         setOnCheckedChangeListener { _, isChecked ->
             pref.set(isChecked)

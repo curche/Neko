@@ -123,7 +123,7 @@ open class BrowseCataloguePresenter(
         }
 
         add(prefs.catalogueAsList().asObservable()
-                .subscribe { setDisplayMode(it) })
+            .subscribe { setDisplayMode(it) })
 
         restartPager()
     }
@@ -139,7 +139,11 @@ open class BrowseCataloguePresenter(
      * @param query the query.
      * @param filters the current state of the filters (for search mode).
      */
-    fun restartPager(query: String = this.query, filters: FilterList = this.appliedFilters, followsPager: Boolean = false) {
+    fun restartPager(
+        query: String = this.query,
+        filters: FilterList = this.appliedFilters,
+        followsPager: Boolean = false
+    ) {
         this.query = query
         this.appliedFilters = filters
 
@@ -149,7 +153,7 @@ open class BrowseCataloguePresenter(
         if (followsPager) {
             pager = FollowsPager(source)
         } else {
-        pager = createPager(query, filters)
+            pager = createPager(query, filters)
         }
 
         val sourceId = source.id
@@ -160,16 +164,16 @@ open class BrowseCataloguePresenter(
         // Prepare the pager.
         pagerSubscription?.let { remove(it) }
         pagerSubscription = pager.results()
-                .observeOn(Schedulers.io())
-                .map { it.first to it.second.map { networkToLocalManga(it, sourceId) } }
-                .doOnNext { initializeMangas(it.second) }
-                .map { it.first to it.second.map { CatalogueItem(it, catalogueAsList, catalougeListType) } }
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribeReplay({ view, (page, mangas) ->
-                    view.onAddPage(page, mangas)
-                }, { _, error ->
-                    Timber.e(error)
-                })
+            .observeOn(Schedulers.io())
+            .map { it.first to it.second.map { networkToLocalManga(it, sourceId) } }
+            .doOnNext { initializeMangas(it.second) }
+            .map { it.first to it.second.map { CatalogueItem(it, catalougeListType) } }
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribeReplay({ view, (page, mangas) ->
+                view.onAddPage(page, mangas)
+            }, { _, error ->
+                Timber.e(error)
+            })
 
         // Request first page.
         requestNext()
@@ -183,9 +187,9 @@ open class BrowseCataloguePresenter(
 
         pageSubscription?.let { remove(it) }
         pageSubscription = Observable.defer { pager.requestNext() }
-                .subscribeFirst({ _, _ ->
-                    // Nothing to do when onNext is emitted.
-                }, BrowseCatalogueController::onAddPageError)
+            .subscribeFirst({ _, _ ->
+                // Nothing to do when onNext is emitted.
+            }, BrowseCatalogueController::onAddPageError)
     }
 
     /**
@@ -211,18 +215,18 @@ open class BrowseCataloguePresenter(
     private fun subscribeToMangaInitializer() {
         initializerSubscription?.let { remove(it) }
         initializerSubscription = mangaDetailSubject.observeOn(Schedulers.io())
-                .flatMap { Observable.from(it) }
-                .filter { it.thumbnail_url == null && !it.initialized }
-                .concatMap { getMangaDetailsObservable(it) }
-                .onBackpressureBuffer()
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe({ manga ->
-                    @Suppress("DEPRECATION")
-                    view?.onMangaInitialized(manga)
-                }, { error ->
-                    Timber.e(error)
-                })
-                .apply { add(this) }
+            .flatMap { Observable.from(it) }
+            .filter { it.thumbnail_url == null && !it.initialized }
+            .concatMap { getMangaDetailsObservable(it) }
+            .onBackpressureBuffer()
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe({ manga ->
+                @Suppress("DEPRECATION")
+                view?.onMangaInitialized(manga)
+            }, { error ->
+                Timber.e(error)
+            })
+            .apply { add(this) }
     }
 
     /**
@@ -261,13 +265,13 @@ open class BrowseCataloguePresenter(
      */
     private fun getMangaDetailsObservable(manga: Manga): Observable<Manga> {
         return source.fetchMangaDetailsObservable(manga)
-                .flatMap { networkManga ->
-                    manga.copyFrom(networkManga)
-                    manga.initialized = true
-                    db.insertManga(manga).executeAsBlocking()
-                    Observable.just(manga)
-                }
-                .onErrorResumeNext { Observable.just(manga) }
+            .flatMap { networkManga ->
+                manga.copyFrom(networkManga)
+                manga.initialized = true
+                db.insertManga(manga).executeAsBlocking()
+                Observable.just(manga)
+            }
+            .onErrorResumeNext { Observable.just(manga) }
     }
 
     /**

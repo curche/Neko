@@ -36,13 +36,13 @@
             android:layout_height="wrap_content"
             android:layout_gravity="end"
             android:background="@drawable/fast_scroll_background"
-            android:backgroundTint="?android:attr/textColorPrimary"
+            android:backgroundTint="?attr/colorOnBackground"
             android:elevation="10dp"
-            app:iconColor="?android:attr/textColorPrimaryInverse"
+            app:iconColor="?attr/colorOnPrimary"
             android:paddingStart="3dp"
             android:paddingTop="8dp"
             android:paddingBottom="8dp"
-            android:textColor="?android:attr/textColorPrimaryInverse"
+            android:textColor="?attr/colorOnPrimary"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
@@ -55,9 +55,9 @@
             android:layout_marginEnd="50dp"
             android:alpha="0"
             android:background="@drawable/round_textview_background"
-            android:backgroundTint="?android:attr/textColorPrimary"
+            android:backgroundTint="?attr/colorPrimary"
             android:padding="10dp"
-            android:textColor="?android:attr/textColorPrimaryInverse"
+            android:textColor="?attr/colorOnPrimary"
             app:layout_constraintEnd_toStartOf="@id/fast_scroller"
             app:layout_constraintTop_toTopOf="@id/fast_scroller"
             tools:alpha="1"
@@ -84,24 +84,4 @@
     <!-- Adding bottom sheet after main content -->
     <include layout="@layout/filter_bottom_sheet" />
 
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/fab"
-        style="@style/Theme.Widget.FABFixed"
-        android:layout_gravity="center"
-        android:clickable="false"
-        android:focusable="false"
-        android:scaleX="0"
-        android:scaleY="0"
-        android:visibility="gone"
-        app:layout_anchor="@id/bottom_sheet"
-        app:layout_anchorGravity="end|top"
-        app:srcCompat="@drawable/ic_file_download_white_24dp" />
-
-    <View
-        android:id="@+id/shadow2"
-        android:layout_width="match_parent"
-        android:layout_height="8dp"
-        android:layout_gravity="bottom"
-        android:alpha="0.25"
-        android:background="@drawable/shape_gradient_top_shadow" />
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

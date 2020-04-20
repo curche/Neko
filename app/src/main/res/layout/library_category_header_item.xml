@@ -26,7 +26,7 @@
 
     <TextView
         android:id="@+id/category_title"
-        style="@style/TextAppearance.MaterialComponents.Headline6"
+        style="@style/TextAppearance.MyTheme.Headline6"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:paddingStart="4dp"
@@ -41,7 +41,6 @@
         android:gravity="center|start"
         android:inputType="none"
         android:maxLines="2"
-        android:textColor="?android:attr/textColorPrimary"
         android:textSize="22sp"
         app:layout_constrainedWidth="true"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -68,7 +67,6 @@
         android:focusable="true"
         android:padding="5dp"
         android:src="@drawable/ic_refresh_white_24dp"
-        android:tint="?android:attr/textColorPrimary"
         app:layout_constraintBottom_toBottomOf="@id/category_title"
         app:layout_constraintEnd_toStartOf="@id/space"
         app:layout_constraintStart_toEndOf="@id/category_title"
@@ -89,7 +87,6 @@
 
     <TextView
         android:id="@+id/category_sort"
-        style="@style/TextAppearance.Regular"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="2dp"
@@ -97,7 +94,6 @@
         android:clickable="true"
         android:drawableEnd="@drawable/ic_sort_white_24dp"
         android:drawablePadding="6dp"
-        android:drawableTint="?android:attr/textColorPrimary"
         android:ellipsize="start"
         android:focusable="true"
         android:gravity="center|end"
@@ -105,6 +101,7 @@
         android:padding="6dp"
         android:textAlignment="textEnd"
         android:textSize="12sp"
+        android:textAppearance="@style/TextAppearance.MyTheme.Body1"
         app:layout_constrainedWidth="true"
         app:layout_constraintBottom_toBottomOf="@id/category_title"
         app:layout_constraintEnd_toEndOf="parent"

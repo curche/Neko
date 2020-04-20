@@ -24,8 +24,6 @@
         android:id="@+id/appbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:theme="?attr/actionBarTheme"
-        android:background="?attr/colorSecondary"
         android:stateListAnimator="@null"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
@@ -35,7 +33,7 @@
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
-            android:background="?attr/colorSecondary">
+            style="@style/Widget.Neko.AppBar">
 
             <LinearLayout
                 android:id="@+id/title_layout"
@@ -53,43 +51,24 @@
                     android:ellipsize="end"
                     android:gravity="start"
                     android:maxLines="1"
-                    android:textColor="?actionBarTintColor"
+                    android:textColor="?attr/colorOnSurface"
                     android:fontFamily="@font/metropolis_medium"
                     android:textSize="20sp"
                     tools:text="Title Text" />
             </LinearLayout>
         </eu.kanade.tachiyomi.ui.base.CenteredToolbar>
 
-        <com.google.android.material.tabs.TabLayout
-            android:id="@+id/tabs"
-            android:visibility="gone"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="?colorPrimary"
-            android:theme="@style/Theme.ActionBar.Tab"
-            app:tabGravity="center"
-            app:tabIndicatorColor="?attr/actionBarTintColor"
-            app:tabInlineLabel="true"
-            app:tabMinWidth="75dp"
-            app:tabMode="auto"
-            app:tabRippleColor="@color/rippleColor"
-            app:tabTextColor="?attr/actionBarTintColor" />
-
     </com.google.android.material.appbar.AppBarLayout>
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottom_nav"
+        style="@style/Widget.MaterialComponents.BottomNavigationView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="?colorPrimaryVariant"
-        app:itemIconTint="@drawable/bottom_nav_item_selector"
-        app:itemRippleColor="@color/rippleColor"
-        app:itemTextColor="@drawable/bottom_nav_item_selector"
         app:labelVisibilityMode="labeled"
+
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:menu="@menu/bottom_navigation"
-        app:tabRippleColor="@color/rippleColor"
-        app:tabTextColor="?attr/tabBarIconColor" />
+        app:menu="@menu/bottom_navigation" />
 </androidx.constraintlayout.widget.ConstraintLayout>

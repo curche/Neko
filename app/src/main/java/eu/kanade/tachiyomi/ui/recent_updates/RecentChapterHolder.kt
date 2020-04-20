@@ -26,12 +26,12 @@ class RecentChapterHolder(private val view: View, private val adapter: RecentCha
     /**
      * Color of read chapter
      */
-    private var readColor = view.context.getResourceColor(android.R.attr.textColorHint)
+    private var readColor = view.context.getColor(R.color.material_on_background_emphasis_medium)
 
     /**
      * Color of unread chapter
      */
-    private var unreadColor = view.context.getResourceColor(android.R.attr.textColorPrimary)
+    private var unreadColor = view.context.getResourceColor(R.attr.colorOnBackground)
 
     /**
      * Currently bound item.
@@ -71,10 +71,10 @@ class RecentChapterHolder(private val view: View, private val adapter: RecentCha
         GlideApp.with(itemView.context).clear(manga_cover)
         if (!item.manga.thumbnail_url.isNullOrEmpty()) {
             GlideApp.with(itemView.context)
-                    .load(item.manga)
-                    .diskCacheStrategy(DiskCacheStrategy.RESOURCE)
-                    .circleCrop()
-                    .into(manga_cover)
+                .load(item.manga)
+                .diskCacheStrategy(DiskCacheStrategy.RESOURCE)
+                .circleCrop()
+                .into(manga_cover)
         }
 
         // Check if chapter is read and set correct color

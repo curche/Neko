@@ -63,7 +63,7 @@
                     android:contentDescription="@string/start_reading"
                     android:padding="6dp"
                     android:src="@drawable/ic_start_reading_white_24dp"
-                    android:tint="@android:color/white" />
+                    android:tint="@color/md_white_1000" />
 
             </FrameLayout>
 
@@ -77,7 +77,7 @@
 
             <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/compact_title"
-                style="@style/TextAppearance.Bold"
+                style="@style/TextAppearance.MyTheme.Headline6"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="bottom"
@@ -86,7 +86,7 @@
                 android:layout_marginBottom="4dp"
                 android:ellipsize="end"
                 android:maxLines="2"
-                android:textColor="@android:color/white"
+                android:textColor="@color/md_white_1000"
                 android:textSize="13sp"
                 tools:text="Sample name" />
 
@@ -131,23 +131,24 @@
 
             <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/title"
-                style="@style/TextAppearance.Bold"
+                style="@style/TextAppearance.MyTheme.Headline6"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ellipsize="end"
                 android:maxLines="2"
-                android:textColor="?android:attr/textColorPrimary"
                 android:textSize="13sp"
+                android:textColor="?attr/colorOnBackground"
                 app:layout_constraintBottom_toTopOf="@+id/subtitle"
                 tools:text="Sample name" />
 
             <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/subtitle"
-                style="@style/TextAppearance.Regular"
+                style="@style/TextAppearance.MyTheme.Subtitle1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="-1dp"
                 android:ellipsize="end"
+                android:textColor="?attr/colorOnSurface"
                 android:singleLine="true"
                 android:textSize="12sp"
                 tools:text="Sample artist" />

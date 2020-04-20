@@ -32,7 +32,7 @@ import kotlin.math.max
  * Sheet to show reader and viewer preferences.
  */
 class ReaderSettingsSheet(private val activity: ReaderActivity) :
-    BottomSheetDialog(activity, R.style.BottomSheetDialogTheme) {
+    BottomSheetDialog(activity) {
 
     /**
      * Preferences helper.

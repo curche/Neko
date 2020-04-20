@@ -3,12 +3,12 @@ package eu.kanade.tachiyomi.data.updater
 import android.app.PendingIntent
 import android.content.Intent
 import androidx.core.app.NotificationCompat
-import androidx.core.content.ContextCompat
 import com.evernote.android.job.Job
 import com.evernote.android.job.JobManager
 import com.evernote.android.job.JobRequest
 import eu.kanade.tachiyomi.R
 import eu.kanade.tachiyomi.data.notification.Notifications
+import eu.kanade.tachiyomi.util.system.getResourceColor
 import eu.kanade.tachiyomi.util.system.notificationManager
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
@@ -19,7 +19,11 @@ class UpdaterJob : Job() {
 
     override fun onRunJob(params: Params): Result {
         GlobalScope.launch(Dispatchers.IO) {
-            val result = try { UpdateChecker.getUpdateChecker().checkForUpdate() } catch (e: Exception) { return@launch }
+            val result = try {
+                UpdateChecker.getUpdateChecker().checkForUpdate()
+            } catch (e: Exception) {
+                return@launch
+            }
             if (result is UpdateResult.NewUpdate<*>) {
                 val url = result.release.downloadLink
 
@@ -31,7 +35,7 @@ class UpdaterJob : Job() {
                     setContentTitle(context.getString(R.string.app_name))
                     setContentText(context.getString(R.string.update_available))
                     setSmallIcon(android.R.drawable.stat_sys_download_done)
-                    color = ContextCompat.getColor(context, R.color.colorAccent)
+                    color = context.getResourceColor(R.attr.colorPrimary)
                     // Download action
                     addAction(
                         android.R.drawable.stat_sys_download_done,
@@ -60,12 +64,12 @@ class UpdaterJob : Job() {
 
         fun setupTask() {
             JobRequest.Builder(TAG)
-                    .setPeriodic(TimeUnit.DAYS.toMillis(1), TimeUnit.HOURS.toMillis(1))
-                    .setRequiredNetworkType(JobRequest.NetworkType.CONNECTED)
-                    .setRequirementsEnforced(true)
-                    .setUpdateCurrent(true)
-                    .build()
-                    .schedule()
+                .setPeriodic(TimeUnit.DAYS.toMillis(1), TimeUnit.HOURS.toMillis(1))
+                .setRequiredNetworkType(JobRequest.NetworkType.CONNECTED)
+                .setRequirementsEnforced(true)
+                .setUpdateCurrent(true)
+                .build()
+                .schedule()
         }
 
         fun cancelTask() {

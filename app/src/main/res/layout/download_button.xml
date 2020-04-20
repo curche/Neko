@@ -22,7 +22,7 @@
         android:visibility="gone"
         android:layout_gravity="center"
         android:indeterminate="true"
-        android:indeterminateTint="@color/material_on_surface_disabled" />
+        android:indeterminateTint="@color/material_on_background_emphasis_medium" />
 
     <ProgressBar
         android:id="@+id/download_progress"
@@ -33,13 +33,12 @@
         style="?android:attr/progressBarStyleHorizontal"
         android:progressDrawable="@drawable/circle_progress"
         android:layout_gravity="center"
-        android:progressTint="@color/colorAccent"
-        android:progressBackgroundTint="@color/material_on_surface_disabled" />
+        android:progressTint="@color/material_on_background_emphasis_high_type"
+        android:progressBackgroundTint="@color/material_on_background_emphasis_medium" />
 
 
     <ImageView
         android:id="@+id/download_icon"
-        android:tint="?colorAccent"
         android:layout_gravity="center"
         android:layout_width="30dp"
         android:layout_height="30dp"

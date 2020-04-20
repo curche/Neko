@@ -20,14 +20,14 @@ class LibraryBadge @JvmOverloads constructor(context: Context, attrs: AttributeS
             text = if (unread == -1) "0" else unread.toString()
             setTextColor(
                 if (unread == -1 && !showTotalChapters)
-                    context.getResourceColor(android.R.attr.colorAccent)
+                    context.getResourceColor(R.attr.colorPrimary)
                 else if (showTotalChapters)
-                    ContextCompat.getColor(context, R.color.total_chapters_badge_text)
-                else ContextCompat.getColor(context, R.color.unread_badge_text)
+                    ContextCompat.getColor(context, R.color.md_white_1000)
+                else context.getResourceColor(R.attr.colorOnPrimary)
             )
             setBackgroundColor(
-                if (showTotalChapters) ContextCompat.getColor(context, R.color.total_chapters_badge)
-                else ContextCompat.getColor(context, R.color.unread_badge)
+                if (showTotalChapters) ContextCompat.getColor(context, R.color.red_600)
+                else context.getResourceColor(R.attr.colorPrimary)
             )
             visibility = when {
                 unread > 0 || unread == -1 || showTotalChapters -> View.VISIBLE
@@ -53,8 +53,8 @@ class LibraryBadge @JvmOverloads constructor(context: Context, attrs: AttributeS
                 .visibility != View.GONE
         ) View.VISIBLE else View.GONE
         unread_angle.setColorFilter(
-            if (showTotalChapters) ContextCompat.getColor(context, R.color.total_chapters_badge)
-            else ContextCompat.getColor(context, R.color.unread_badge)
+            if (showTotalChapters) ContextCompat.getColor(context, R.color.red_600)
+            else context.getResourceColor(R.attr.colorPrimary)
         )
         if (unread_angle.visibility == View.VISIBLE) {
             download_text.updatePaddingRelative(end = 8.dpToPx)

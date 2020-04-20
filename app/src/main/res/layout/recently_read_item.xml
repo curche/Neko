@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
-    style="@style/Theme.Widget.CardView.Item"
+    style="@style/Widget.MaterialComponents.CardView"
     android:padding="0dp">
 
     <LinearLayout
@@ -32,25 +32,25 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:maxLines="2"
-                    android:textAppearance="@style/TextAppearance.Medium.Title" />
+                    android:textAppearance="@style/TextAppearance.MyTheme.Headline6" />
 
                 <TextView
                     android:id="@+id/manga_source"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_below="@id/title"
-                    android:textAppearance="@style/TextAppearance.Medium.Body2" />
+                    android:textAppearance="@style/TextAppearance.MyTheme.Body2" />
 
                 <TextView
                     android:id="@+id/last_read"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_below="@id/manga_source"
-                    android:textAppearance="@style/TextAppearance.Medium.Body2.Hint" />
+                    android:textAppearance="@style/TextAppearance.MyTheme.Subtitle2" />
             </RelativeLayout>
 
             <Button
-                style="@style/Theme.Widget.Button.Borderless.Negative"
+                style="@style/Widget.AppCompat.Button.Borderless.Colored"
                 android:id="@+id/remove"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -58,13 +58,13 @@
                 android:text="@string/remove" />
 
             <Button
-                style="@style/Theme.Widget.Button.Borderless"
+                style="@style/Widget.AppCompat.Button.Borderless"
                 android:id="@+id/resume"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentBottom="true"
                 android:layout_toEndOf="@id/remove"
-                android:text="@string/resume"/>
+                android:text="@string/resume" />
 
         </RelativeLayout>
 

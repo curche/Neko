@@ -25,11 +25,9 @@ class MangaDetailsAdapter(
     val delegate: MangaDetailsInterface = controller
     val presenter = controller.presenter
 
-    val readColor = context.getResourceColor(android.R.attr.textColorHint)
+    val readColor = context.getColor(R.color.material_on_background_emphasis_medium)
 
-    val unreadColor = context.getResourceColor(android.R.attr.textColorPrimary)
-
-    val bookmarkedColor = context.getResourceColor(R.attr.colorAccent)
+    val unreadColor = context.getResourceColor(R.attr.colorOnBackground)
 
     val decimalFormat = DecimalFormat("#.###", DecimalFormatSymbols()
         .apply { decimalSeparator = '.' })

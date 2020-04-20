@@ -9,7 +9,6 @@ import android.os.Build
 import android.os.IBinder
 import android.os.PowerManager
 import androidx.core.app.NotificationCompat
-import androidx.core.content.ContextCompat
 import com.github.salomonbrys.kotson.fromJson
 import com.google.gson.JsonArray
 import com.google.gson.JsonObject
@@ -35,6 +34,7 @@ import eu.kanade.tachiyomi.data.notification.Notifications
 import eu.kanade.tachiyomi.data.track.TrackManager
 import eu.kanade.tachiyomi.util.lang.chop
 import eu.kanade.tachiyomi.util.storage.getUriCompat
+import eu.kanade.tachiyomi.util.system.getResourceColor
 import eu.kanade.tachiyomi.util.system.isServiceRunning
 import eu.kanade.tachiyomi.util.system.notificationManager
 import kotlinx.coroutines.CoroutineExceptionHandler
@@ -350,7 +350,7 @@ class BackupRestoreService : Service() {
             .setOngoing(true)
             .setOnlyAlertOnce(true)
             .setAutoCancel(false)
-            .setColor(ContextCompat.getColor(this, R.color.colorAccent))
+            .setColor(this.getResourceColor(R.attr.colorPrimary))
             .addAction(
                 R.drawable.ic_clear_grey_24dp_img,
                 getString(android.R.string.cancel),
@@ -429,10 +429,14 @@ class BackupRestoreService : Service() {
             .setStyle(NotificationCompat.BigTextStyle().bigText(restoreString))
             .setSmallIcon(R.drawable.ic_neko_notification)
             .setPriority(NotificationCompat.PRIORITY_HIGH)
-            .setColor(ContextCompat.getColor(this, R.color.colorAccent))
+            .setColor(this.getResourceColor(R.attr.colorPrimary))
         if (errors.size > 0 && !path.isNullOrEmpty() && !file.isNullOrEmpty()) {
-            resultNotification.addAction(R.drawable.ic_clear_grey_24dp_img, getString(R.string
-                .view_all_errors), getErrorLogIntent(path, file))
+            resultNotification.addAction(
+                R.drawable.ic_clear_grey_24dp_img, getString(
+                    R.string
+                        .view_all_errors
+                ), getErrorLogIntent(path, file)
+            )
         }
         notificationManager.notify(Notifications.ID_RESTORE_COMPLETE, resultNotification.build())
     }
@@ -446,7 +450,7 @@ class BackupRestoreService : Service() {
             .setContentText(errorMessage)
             .setSmallIcon(R.drawable.ic_error_grey)
             .setPriority(NotificationCompat.PRIORITY_HIGH)
-            .setColor(ContextCompat.getColor(this, R.color.md_red_500))
+            .setColor(this.getResourceColor(R.attr.colorError))
         notificationManager.notify(Notifications.ID_RESTORE_ERROR, resultNotification.build())
     }
 

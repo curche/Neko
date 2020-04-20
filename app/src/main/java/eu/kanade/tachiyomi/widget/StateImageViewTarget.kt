@@ -8,7 +8,6 @@ import androidx.vectordrawable.graphics.drawable.VectorDrawableCompat
 import com.bumptech.glide.request.target.ImageViewTarget
 import com.bumptech.glide.request.transition.Transition
 import eu.kanade.tachiyomi.R
-import eu.kanade.tachiyomi.util.system.getResourceColor
 import eu.kanade.tachiyomi.util.view.gone
 import eu.kanade.tachiyomi.util.view.visible
 
@@ -28,7 +27,7 @@ class StateImageViewTarget(
     val errorScaleType: ScaleType = ScaleType.CENTER
 ) :
 
-        ImageViewTarget<Drawable>(view) {
+    ImageViewTarget<Drawable>(view) {
 
     private var resource: Drawable? = null
 
@@ -48,7 +47,7 @@ class StateImageViewTarget(
         view.scaleType = errorScaleType
 
         val vector = VectorDrawableCompat.create(view.context.resources, errorDrawableRes, null)
-        vector?.setTint(view.context.getResourceColor(android.R.attr.textColorSecondary))
+        vector?.setTint(view.context.getColor(R.color.material_on_background_emphasis_medium))
         view.setImageDrawable(vector)
     }
 

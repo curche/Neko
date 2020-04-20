@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/track"
-    style="@style/Theme.Widget.CardView.Item"
+    style="@style/Widget.MaterialComponents.CardView"
     android:padding="0dp">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -98,7 +98,7 @@
 
             <TextView
                 android:id="@+id/track_status"
-                style="@style/TextAppearance.Regular.Body1.Secondary"
+                style="@style/TextAppearance.MyTheme.Subtitle1"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:background="@drawable/card_item_selector"
@@ -116,7 +116,7 @@
 
             <TextView
                 android:id="@+id/track_chapters"
-                style="@style/TextAppearance.Regular.Body1.Secondary"
+                style="@style/TextAppearance.MyTheme.Subtitle1"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 android:background="@drawable/card_item_selector"
@@ -142,7 +142,7 @@
 
                 <TextView
                     android:id="@+id/track_score"
-                    style="@style/TextAppearance.Regular.Body1.Secondary"
+                    style="@style/TextAppearance.MyTheme.Subtitle1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
@@ -178,7 +178,7 @@
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/add_tracking"
-            style="@style/Theme.Widget.Button.TextButton"
+            style="@style/Widget.MaterialComponents.Button.TextButton"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:letterSpacing="0.0"

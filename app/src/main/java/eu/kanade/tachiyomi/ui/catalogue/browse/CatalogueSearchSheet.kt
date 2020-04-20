@@ -20,7 +20,7 @@ import kotlinx.android.synthetic.main.catalogue_filter_sheet.*
 import uy.kohesive.injekt.injectLazy
 
 class CatalogueSearchSheet(activity: Activity) :
-    BottomSheetDialog(activity, R.style.BottomSheetDialogTheme) {
+    BottomSheetDialog(activity) {
 
     /**
      * Preferences helper.

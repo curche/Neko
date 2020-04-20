@@ -3,13 +3,13 @@ package eu.kanade.tachiyomi.ui.reader
 import android.content.Context
 import android.graphics.Bitmap
 import androidx.core.app.NotificationCompat
-import androidx.core.content.ContextCompat
 import com.bumptech.glide.load.engine.DiskCacheStrategy
 import eu.kanade.tachiyomi.R
 import eu.kanade.tachiyomi.data.glide.GlideApp
 import eu.kanade.tachiyomi.data.notification.NotificationHandler
 import eu.kanade.tachiyomi.data.notification.NotificationReceiver
 import eu.kanade.tachiyomi.data.notification.Notifications
+import eu.kanade.tachiyomi.util.system.getResourceColor
 import eu.kanade.tachiyomi.util.system.notificationManager
 import java.io.File
 
@@ -21,7 +21,8 @@ class SaveImageNotifier(private val context: Context) {
     /**
      * Notification builder.
      */
-    private val notificationBuilder = NotificationCompat.Builder(context, Notifications.CHANNEL_COMMON)
+    private val notificationBuilder =
+        NotificationCompat.Builder(context, Notifications.CHANNEL_COMMON)
 
     /**
      * Id of the notification.
@@ -58,20 +59,32 @@ class SaveImageNotifier(private val context: Context) {
             setStyle(NotificationCompat.BigPictureStyle().bigPicture(image))
             setLargeIcon(image)
             setAutoCancel(true)
-            color = ContextCompat.getColor(context, R.color.colorAccent)
+            color = context.getResourceColor(R.attr.colorPrimary)
             // Clear old actions if they exist
             if (mActions.isNotEmpty())
                 mActions.clear()
 
             setContentIntent(NotificationHandler.openImagePendingActivity(context, file))
             // Share action
-            addAction(R.drawable.ic_share_grey_24dp,
-                    context.getString(R.string.share),
-                    NotificationReceiver.shareImagePendingBroadcast(context, file.absolutePath, notificationId))
+            addAction(
+                R.drawable.ic_share_grey_24dp,
+                context.getString(R.string.share),
+                NotificationReceiver.shareImagePendingBroadcast(
+                    context,
+                    file.absolutePath,
+                    notificationId
+                )
+            )
             // Delete action
-            addAction(R.drawable.ic_delete_grey_24dp,
-                    context.getString(R.string.delete),
-                    NotificationReceiver.deleteImagePendingBroadcast(context, file.absolutePath, notificationId))
+            addAction(
+                R.drawable.ic_delete_grey_24dp,
+                context.getString(R.string.delete),
+                NotificationReceiver.deleteImagePendingBroadcast(
+                    context,
+                    file.absolutePath,
+                    notificationId
+                )
+            )
 
             updateNotification()
         }

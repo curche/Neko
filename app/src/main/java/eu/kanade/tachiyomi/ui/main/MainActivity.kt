@@ -118,7 +118,7 @@ open class MainActivity : BaseActivity(), DownloadServiceListener, MangadexLogin
         setSupportActionBar(toolbar)
 
         drawerArrow = DrawerArrowDrawable(this)
-        drawerArrow?.color = getResourceColor(R.attr.actionBarTintColor)
+        drawerArrow?.color = getResourceColor(R.attr.colorOnSurface)
         searchDrawable = ContextCompat.getDrawable(
             this, R.drawable.ic_search_white_24dp
         )
@@ -291,7 +291,7 @@ open class MainActivity : BaseActivity(), DownloadServiceListener, MangadexLogin
     }
 
     override fun startSupportActionMode(callback: androidx.appcompat.view.ActionMode.Callback): androidx.appcompat.view.ActionMode? {
-        window?.statusBarColor = getResourceColor(R.attr.colorPrimaryVariant)
+        window?.statusBarColor = getResourceColor(R.attr.colorOnPrimary)
         return super.startSupportActionMode(callback)
     }
 
@@ -305,7 +305,7 @@ open class MainActivity : BaseActivity(), DownloadServiceListener, MangadexLogin
             delay(100)
             if (Color.alpha(window?.statusBarColor ?: Color.BLACK) >= 255) window?.statusBarColor =
                 getResourceColor(
-                    android.R.attr.statusBarColor
+                    R.attr.colorPrimary
                 )
         }
         super.onSupportActionModeFinished(mode)

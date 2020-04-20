@@ -112,20 +112,22 @@ class LibraryHeaderItem(
 
             if (category.isFirst == true && category.isLast == true) sectionText.text = ""
             else sectionText.text = category.name
-            sortText.text = itemView.context.getString(R.string.sort_by_,
+            sortText.text = itemView.context.getString(
+                R.string.sort_by_,
                 itemView.context.getString(category.sortRes())
             )
 
             val isAscending = category.isAscending()
             val sortingMode = category.sortingMode()
             val sortDrawable = if (category.isHidden) R.drawable.ic_expand_more_white_24dp
-                else
+            else
                 when {
                     sortingMode == LibrarySort.DRAG_AND_DROP || sortingMode == null -> R.drawable
                         .ic_sort_white_24dp
                     if (sortingMode == LibrarySort.DATE_ADDED ||
                         sortingMode == LibrarySort.LATEST_CHAPTER ||
-                        sortingMode == LibrarySort.LAST_READ) !isAscending else isAscending ->
+                        sortingMode == LibrarySort.LAST_READ
+                    ) !isAscending else isAscending ->
                         R.drawable.ic_arrow_down_white_24dp
                     else -> R.drawable.ic_arrow_up_white_24dp
                 }
@@ -163,6 +165,7 @@ class LibraryHeaderItem(
                 updateButton.invisible()
             }
         }
+
         private fun showCatSortOptions() {
             val category =
                 (adapter.getItem(adapterPosition) as? LibraryHeaderItem)?.category ?: return
@@ -176,7 +179,8 @@ class LibraryHeaderItem(
             // Inflate our menu resource into the PopupMenu's Menu
             popup.menuInflater.inflate(
                 if (category.id == -1) R.menu.main_sort
-                else R.menu.cat_sort, popup.menu)
+                else R.menu.cat_sort, popup.menu
+            )
 
             // Set a listener so we are notified if a menu item is clicked
             popup.setOnMenuItemClickListener { menuItem ->
@@ -199,9 +203,10 @@ class LibraryHeaderItem(
             )
 
             if (category.id == -1)
-            popup.menu.findItem(R.id.action_drag_and_drop).title = contentView.context.getString(
-                R.string.category
-            )
+                popup.menu.findItem(R.id.action_drag_and_drop).title =
+                    contentView.context.getString(
+                        R.string.category
+                    )
 
             if (sortingMode != null && popup.menu is MenuBuilder) {
                 val m = popup.menu as MenuBuilder
@@ -215,13 +220,19 @@ class LibraryHeaderItem(
                     sortingMode == LibrarySort.DRAG_AND_DROP -> R.drawable.ic_check_white_24dp
                     if (sortingMode == LibrarySort.DATE_ADDED ||
                         sortingMode == LibrarySort.LATEST_CHAPTER ||
-                        sortingMode == LibrarySort.LAST_READ) !isAscending else isAscending ->
+                        sortingMode == LibrarySort.LAST_READ
+                    ) !isAscending else isAscending ->
                         R.drawable.ic_arrow_down_white_24dp
                     else -> R.drawable.ic_arrow_up_white_24dp
                 }
             )
             val s = SpannableString(currentItem?.title ?: "")
-            s.setSpan(ForegroundColorSpan(itemView.context.getResourceColor(android.R.attr.colorAccent)), 0, s.length, 0)
+            s.setSpan(
+                ForegroundColorSpan(itemView.context.getResourceColor(R.attr.colorPrimary)),
+                0,
+                s.length,
+                0
+            )
             currentItem?.title = s
 
             // Finally show the PopupMenu
@@ -230,7 +241,7 @@ class LibraryHeaderItem(
 
         private fun tintVector(resId: Int): Drawable? {
             return ContextCompat.getDrawable(itemView.context, resId)?.mutate()?.apply {
-                setTint(itemView.context.getResourceColor(android.R.attr.colorAccent))
+                setTint(itemView.context.getResourceColor(R.attr.colorPrimary))
             }
         }
 
@@ -273,10 +284,11 @@ class LibraryHeaderItem(
             )
             val tintedDrawable = drawable?.mutate()
             tintedDrawable?.setTint(
-                ContextCompat.getColor(
-                    contentView.context, if (allSelected) R.color.colorAccent
-                    else R.color.gray_button
-                )
+                if (allSelected) {
+                    contentView.context.getResourceColor(R.attr.colorPrimary)
+                } else {
+                    ContextCompat.getColor(contentView.context, R.color.gray_button)
+                }
             )
             checkboxImage.setImageDrawable(tintedDrawable)
         }

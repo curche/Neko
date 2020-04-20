@@ -397,6 +397,7 @@
     <string name="add_tracking">Add tracking</string>
 
     <!-- Similar -->
+    <string name="similar_manga">Similar Manga</string>
     <string name="similar">Similar Manga (Beta)</string>
     <string name="similar_settings">Similar Manga Settings</string>
     <string name="similar_screen">Show Similar Manga</string>
@@ -659,6 +660,7 @@
     <string name="oldest">Oldest</string>
     <string name="open_in_browser">Open in browser</string>
     <string name="open_in_web_view">Open in web view</string>
+    <string name="open_external">External links</string>
     <string name="options">Options</string>
     <string name="pause">Pause</string>
     <string name="picture_saved">Picture saved</string>

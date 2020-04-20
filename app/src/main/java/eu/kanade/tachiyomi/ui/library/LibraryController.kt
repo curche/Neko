@@ -849,6 +849,8 @@ open class LibraryController(
 
         val searchItem = menu.findItem(R.id.action_search)
         val searchView = searchItem.actionView as SearchView
+
+
         searchView.queryHint = resources?.getString(R.string.library_search_hint)
 
         searchItem.collapseActionView()

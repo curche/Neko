@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              android:id="@+id/chg_rowheader"
-              android:layout_width="match_parent"
-              android:layout_height="wrap_content"
-              android:gravity="center_vertical"
-              android:minHeight="@dimen/chglib_material_minHeight"
-              android:orientation="horizontal"
-              android:paddingStart="@dimen/chglib_material_keyline1"
-              android:paddingEnd="@dimen/chglib_material_keyline1">
+<LinearLayout xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/chg_rowheader"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center_vertical"
+    android:minHeight="@dimen/chglib_material_minHeight"
+    android:orientation="horizontal"
+    android:paddingStart="@dimen/chglib_material_keyline1"
+    android:paddingEnd="@dimen/chglib_material_keyline1">
 
     <!-- ChangeLog Header [Version] You have to use the id="chg_headerVersion" -->
     <TextView
@@ -18,8 +19,9 @@
         android:gravity="center_vertical"
         android:paddingBottom="@dimen/chglib_material_keyline1"
         android:paddingTop="@dimen/chglib_material_keyline1"
-        android:textAppearance="@style/TextAppearance.Medium.Body2"
+        android:textAppearance="@style/TextAppearance.MyTheme.Headline3"
         android:textAllCaps="false"
-        android:textColor="?attr/colorAccent" />
+        tools:text="@string/changelog_header_version"
+        android:textColor="?attr/colorOnBackground" />
 
 </LinearLayout>

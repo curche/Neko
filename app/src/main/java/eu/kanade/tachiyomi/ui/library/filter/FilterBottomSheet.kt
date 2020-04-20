@@ -75,12 +75,12 @@ class FilterBottomSheet @JvmOverloads constructor(context: Context, attrs: Attri
         sheetBehavior = BottomSheetBehavior.from(this)
         sheetBehavior?.isHideable = true
         pager = pagerView
-        val shadow2: View = (pagerView.parent.parent as ViewGroup).findViewById(R.id.shadow2)
+        // val shadow2: View = (pagerView.parent.parent as ViewGroup).findViewById(R.id.shadow2)
         val shadow: View = (pagerView.parent.parent as ViewGroup).findViewById(R.id.shadow)
         sheetBehavior?.addBottomSheetCallback(object : BottomSheetBehavior.BottomSheetCallback() {
             override fun onSlide(bottomSheet: View, progress: Float) {
                 pill.alpha = (1 - max(0f, progress)) * 0.25f
-                shadow2.alpha = (1 - max(0f, progress)) * 0.25f
+                //shadow2.alpha = (1 - max(0f, progress)) * 0.25f
                 shadow.alpha = 1 + min(0f, progress)
                 updateRootPadding(progress)
             }

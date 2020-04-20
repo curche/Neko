@@ -49,9 +49,10 @@ class ReaderChapterItem(val chapter: Chapter, val manga: Manga, val isCurrent: B
         var bookmarkButton: FrameLayout = view.findViewById(R.id.bookmark_layout)
         var bookmarkImage: ImageView = view.findViewById(R.id.bookmark_image)
 
-        private var readColor = view.context.getResourceColor(android.R.attr.textColorHint)
-        private var unreadColor = view.context.getResourceColor(android.R.attr.textColorPrimary)
-        private var activeColor = view.context.getResourceColor(android.R.attr.colorAccent)
+        private var readColor =
+            view.context.getColor(R.color.material_on_background_emphasis_medium)
+        private var unreadColor = view.context.getResourceColor(R.attr.colorPrimary)
+        private var activeColor = view.context.getResourceColor(R.attr.colorPrimary)
 
         private var activeTypeFace =
             ResourcesCompat.getFont(view.context, R.font.metropolis_black)

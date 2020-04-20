@@ -32,7 +32,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
         android:text="@string/history"
-        style="@style/Theme.Widget.Button.RoundedOutline"/>
+        style="@style/Widget.MaterialComponents.Button.OutlinedButton" />
 
 
     <com.google.android.material.button.MaterialButton
@@ -46,5 +46,5 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
         android:text="@string/updates"
-        style="@style/Theme.Widget.Button.RoundedOutline"/>
+        style="@style/Widget.MaterialComponents.Button.OutlinedButton" />
 </androidx.constraintlayout.widget.ConstraintLayout>

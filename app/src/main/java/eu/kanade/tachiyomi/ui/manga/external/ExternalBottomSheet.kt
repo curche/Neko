@@ -15,7 +15,7 @@ import eu.kanade.tachiyomi.util.view.setEdgeToEdge
 import kotlinx.android.synthetic.main.external_bottom_sheet.*
 
 class ExternalBottomSheet(private val controller: MangaDetailsController) : BottomSheetDialog
-    (controller.activity!!, R.style.BottomSheetDialogTheme) {
+    (controller.activity!!) {
 
     val activity = controller.activity!!
 

@@ -21,7 +21,6 @@ import android.view.WindowManager
 import android.view.animation.Animation
 import android.view.animation.AnimationUtils
 import android.widget.SeekBar
-import androidx.appcompat.app.AppCompatDelegate
 import com.davemorrissey.labs.subscaleview.SubsamplingScaleImageView
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.bottomsheet.BottomSheetDialog
@@ -46,7 +45,6 @@ import eu.kanade.tachiyomi.ui.reader.viewer.webtoon.WebtoonViewer
 import eu.kanade.tachiyomi.util.lang.plusAssign
 import eu.kanade.tachiyomi.util.storage.getUriCompat
 import eu.kanade.tachiyomi.util.system.GLUtil
-import eu.kanade.tachiyomi.util.system.ThemeUtil
 import eu.kanade.tachiyomi.util.system.getResourceColor
 import eu.kanade.tachiyomi.util.system.launchUI
 import eu.kanade.tachiyomi.util.system.toast
@@ -160,14 +158,6 @@ class ReaderActivity : BaseRxActivity<ReaderPresenter>(),
      * Called when the activity is created. Initializes the presenter and configuration.
      */
     override fun onCreate(savedInstanceState: Bundle?) {
-        AppCompatDelegate.setDefaultNightMode(ThemeUtil.nightMode(preferences.theme()))
-        val theme = preferences.theme()
-        setTheme(
-            when {
-                ThemeUtil.isAMOLEDTheme(theme) -> R.style.Theme_Tachiyomi_Amoled
-                else -> R.style.Theme_Tachiyomi
-            }
-        )
         super.onCreate(savedInstanceState)
         setContentView(R.layout.reader_activity)
 

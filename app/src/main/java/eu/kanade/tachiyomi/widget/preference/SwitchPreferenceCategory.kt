@@ -19,11 +19,12 @@ class SwitchPreferenceCategory @JvmOverloads constructor(
     context: Context,
     attrs: AttributeSet? = null
 ) :
-PreferenceCategory(
+    PreferenceCategory(
         context,
         attrs,
-        R.attr.switchPreferenceCompatStyle),
-CompoundButton.OnCheckedChangeListener {
+        R.attr.switchPreferenceCompatStyle
+    ),
+    CompoundButton.OnCheckedChangeListener {
 
     private var mChecked = false
 
@@ -32,7 +33,7 @@ CompoundButton.OnCheckedChangeListener {
     override fun onBindViewHolder(holder: PreferenceViewHolder) {
         super.onBindViewHolder(holder)
         val titleView = holder.findViewById(android.R.id.title) as TextView
-        titleView.setTextColor(context.getResourceColor(R.attr.colorAccent))
+        titleView.setTextColor(context.getResourceColor(R.attr.colorOnBackground))
         syncSwitchView(holder)
     }
 
@@ -117,9 +118,11 @@ CompoundButton.OnCheckedChangeListener {
     }
 
     override fun onSetInitialValue(restoreValue: Boolean, defaultValue: Any?) {
-        setChecked(if (restoreValue)
-            getPersistedBoolean(mChecked)
-        else
-            defaultValue as Boolean)
+        setChecked(
+            if (restoreValue)
+                getPersistedBoolean(mChecked)
+            else
+                defaultValue as Boolean
+        )
     }
 }

@@ -12,7 +12,6 @@
 
         <LinearLayout
             android:id="@+id/display_layout"
-            style="@style/BottomSheetDialogTheme"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/bg_bottom_sheet_dialog_fragment"
@@ -37,23 +36,24 @@
                 android:paddingEnd="12dp">
 
                 <com.google.android.material.radiobutton.MaterialRadioButton
-                    style="@style/NekoMaterialButtonTint"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    style="@style/Widget.Neko.Generic"
+                    android:textColor="?attr/colorOnBackground"
                     android:text="@string/list" />
 
                 <com.google.android.material.radiobutton.MaterialRadioButton
-                    style="@style/NekoMaterialButtonTint"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    style="@style/Widget.Neko.Generic"
                     android:layout_marginStart="12dp"
 
                     android:text="@string/compact_grid" />
 
                 <com.google.android.material.radiobutton.MaterialRadioButton
-                    style="@style/NekoMaterialButtonTint"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    style="@style/Widget.Neko.Generic"
                     android:layout_marginStart="12dp"
 
                     android:text="@string/comfortable_grid" />
@@ -77,33 +77,33 @@
                 android:orientation="horizontal">
 
                 <com.google.android.material.radiobutton.MaterialRadioButton
-                    style="@style/NekoMaterialButtonTint"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    style="@style/Widget.Neko.Generic"
                     android:text="@string/small" />
 
                 <com.google.android.material.radiobutton.MaterialRadioButton
-                    style="@style/NekoMaterialButtonTint"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="12dp"
+                    style="@style/Widget.Neko.Generic"
                     android:text="@string/medium" />
 
                 <com.google.android.material.radiobutton.MaterialRadioButton
-                    style="@style/NekoMaterialButtonTint"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="12dp"
+                    style="@style/Widget.Neko.Generic"
                     android:text="@string/large" />
             </RadioGroup>
 
             <com.google.android.material.checkbox.MaterialCheckBox
                 android:id="@+id/uniform_grid"
-                style="@style/NekoMaterialButtonTint"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="12dp"
                 android:layout_marginEnd="12dp"
+                style="@style/Widget.Neko.Generic"
                 android:text="@string/uniform_covers" />
 
             <com.google.android.material.textview.MaterialTextView
@@ -124,26 +124,26 @@
                 android:paddingEnd="12dp">
 
                 <com.google.android.material.radiobutton.MaterialRadioButton
-                    style="@style/NekoMaterialButtonTint"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:maxLines="2"
+                    style="@style/Widget.Neko.Generic"
                     android:text="@string/hide_badges" />
 
                 <com.google.android.material.radiobutton.MaterialRadioButton
-                    style="@style/NekoMaterialButtonTint"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="12dp"
                     android:maxLines="2"
+                    style="@style/Widget.Neko.Generic"
                     android:text="@string/show_badges" />
 
                 <com.google.android.material.radiobutton.MaterialRadioButton
-                    style="@style/NekoMaterialButtonTint"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="12dp"
                     android:maxLines="2"
+                    style="@style/Widget.Neko.Generic"
                     android:text="@string/show_count" />
             </RadioGroup>
 
@@ -158,29 +158,29 @@
 
             <com.google.android.material.checkbox.MaterialCheckBox
                 android:id="@+id/download_badge"
-                style="@style/NekoMaterialButtonTint"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="12dp"
                 android:layout_marginEnd="12dp"
+                style="@style/Widget.Neko.Generic"
                 android:text="@string/download_badge" />
 
             <com.google.android.material.checkbox.MaterialCheckBox
                 android:id="@+id/autohide_seeker"
-                style="@style/NekoMaterialButtonTint"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="12dp"
                 android:layout_marginEnd="12dp"
+                style="@style/Widget.Neko.Generic"
                 android:text="@string/always_show_library_fast_scroll" />
 
             <com.google.android.material.checkbox.MaterialCheckBox
                 android:id="@+id/hide_filters"
-                style="@style/NekoMaterialButtonTint"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="12dp"
                 android:layout_marginEnd="12dp"
+                style="@style/Widget.Neko.Generic"
                 android:text="@string/start_with_filters_hidden" />
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>
@@ -197,5 +197,5 @@
         android:contentDescription="@string/close"
         android:focusable="true"
         android:src="@drawable/ic_close_white_24dp"
-        android:tint="?android:attr/textColorPrimary" />
+        android:tint="?attr/colorOnBackground" />
 </FrameLayout>

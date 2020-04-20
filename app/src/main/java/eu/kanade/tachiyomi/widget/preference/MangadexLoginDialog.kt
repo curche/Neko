@@ -53,7 +53,7 @@ class MangadexLoginDialog(bundle: Bundle? = null) : LoginDialogPreference(bundle
     override fun checkLogin() {
 
         v?.apply {
-            if (username.text.isEmpty() || password.text.isEmpty())
+            if (username.text!!.isEmpty() || password.text!!.isEmpty())
                 return
 
             login.progress = 1

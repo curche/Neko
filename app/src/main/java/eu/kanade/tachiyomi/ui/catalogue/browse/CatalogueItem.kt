@@ -22,54 +22,49 @@ import kotlinx.android.synthetic.main.catalogue_grid_item.view.*
 
 class CatalogueItem(
     val manga: Manga,
-    private val catalogueAsList: Preference<Boolean>,
     private val catalogueListType: Preference<Int>
 ) :
-        AbstractFlexibleItem<CatalogueHolder>() {
+    AbstractFlexibleItem<CatalogueHolder>() {
 
-    override fun getLayoutRes(): Int {
-        return if (catalogueAsList.getOrDefault())
-            R.layout.catalogue_list_item
-        else
-            R.layout.catalogue_grid_item
-    }
+    override fun getLayoutRes(): Int = R.layout.catalogue_grid_item
 
-    override fun createViewHolder(view: View, adapter: FlexibleAdapter<IFlexible<RecyclerView.ViewHolder>>): CatalogueHolder {
-        val parent = adapter.recyclerView
-        return if (parent is AutofitRecyclerView) {
-            val listType = catalogueListType.getOrDefault()
-            view.apply {
-                val coverHeight = (parent.itemWidth / 3 * 4f).toInt()
-                if (listType == 1) {
-                    gradient.layoutParams = FrameLayout.LayoutParams(
-                        FrameLayout.LayoutParams.MATCH_PARENT,
-                        (coverHeight * 0.66f).toInt(),
-                        Gravity.BOTTOM)
-                    card.updateLayoutParams<ConstraintLayout.LayoutParams> {
-                        bottomMargin = 6.dpToPx
-                    }
-                } else {
-                    constraint_layout.background = ContextCompat.getDrawable(
-                        context, R.drawable.library_item_selector
-                    )
-                }
-                constraint_layout.layoutParams = FrameLayout.LayoutParams(
-                    ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT
+    override fun createViewHolder(
+        view: View,
+        adapter: FlexibleAdapter<IFlexible<RecyclerView.ViewHolder>>
+    ): CatalogueHolder {
+        val parent = adapter.recyclerView as AutofitRecyclerView
+
+        val listType = catalogueListType.getOrDefault()
+        view.apply {
+            val coverHeight = (parent.itemWidth / 3 * 4f).toInt()
+            if (listType == 1) {
+                gradient.layoutParams = FrameLayout.LayoutParams(
+                    FrameLayout.LayoutParams.MATCH_PARENT,
+                    (coverHeight * 0.66f).toInt(),
+                    Gravity.BOTTOM
                 )
-                cover_thumbnail.maxHeight = Int.MAX_VALUE
-                cover_thumbnail.minimumHeight = 0
-                constraint_layout.minHeight = 0
-                cover_thumbnail.scaleType = ImageView.ScaleType.CENTER_CROP
-                cover_thumbnail.adjustViewBounds = false
-                cover_thumbnail.layoutParams = FrameLayout.LayoutParams(
-                    ViewGroup.LayoutParams.MATCH_PARENT,
-                    (parent.itemWidth / 3f * 3.7f).toInt()
+                card.updateLayoutParams<ConstraintLayout.LayoutParams> {
+                    bottomMargin = 6.dpToPx
+                }
+            } else {
+                constraint_layout.background = ContextCompat.getDrawable(
+                    context, R.drawable.library_item_selector
                 )
             }
-            CatalogueGridHolder(view, adapter, listType == 1)
-        } else {
-            CatalogueListHolder(view, adapter)
+            constraint_layout.layoutParams = FrameLayout.LayoutParams(
+                ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT
+            )
+            cover_thumbnail.maxHeight = Int.MAX_VALUE
+            cover_thumbnail.minimumHeight = 0
+            constraint_layout.minHeight = 0
+            cover_thumbnail.scaleType = ImageView.ScaleType.CENTER_CROP
+            cover_thumbnail.adjustViewBounds = false
+            cover_thumbnail.layoutParams = FrameLayout.LayoutParams(
+                ViewGroup.LayoutParams.MATCH_PARENT,
+                (parent.itemWidth / 3f * 3.7f).toInt()
+            )
         }
+        return CatalogueGridHolder(view, adapter, listType == 1)
     }
 
     override fun bindViewHolder(

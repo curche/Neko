@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!--
+<?xml version="1.0" encoding="utf-8"?><!--
 The regular version uses ?attr/colorPrimary when focused, which doesn't work well with our themes.
 https://github.com/material-components/material-components-android/blob/master/lib/java/com/google/android/material/textfield/res/color/mtrl_filled_stroke_color.xml
 -->

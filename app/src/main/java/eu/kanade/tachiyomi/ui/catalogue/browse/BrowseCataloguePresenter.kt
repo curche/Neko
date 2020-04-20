@@ -93,12 +93,6 @@ open class BrowseCataloguePresenter(
     private val mangaDetailSubject = PublishSubject.create<List<Manga>>()
 
     /**
-     * Whether the view is in list mode or not.
-     */
-    var isListMode: Boolean = false
-        private set
-
-    /**
      * Subscription for the pager.
      */
     private var pagerSubscription: Subscription? = null
@@ -123,7 +117,7 @@ open class BrowseCataloguePresenter(
         }
 
         add(prefs.catalogueAsList().asObservable()
-            .subscribe { setDisplayMode(it) })
+            .subscribe { subscribeToMangaInitializer() })
 
         restartPager()
     }
@@ -158,7 +152,6 @@ open class BrowseCataloguePresenter(
 
         val sourceId = source.id
 
-        val catalogueAsList = prefs.catalogueAsList()
         val catalougeListType = prefs.libraryLayout()
 
         // Prepare the pager.
@@ -197,16 +190,6 @@ open class BrowseCataloguePresenter(
      */
     fun hasNextPage(): Boolean {
         return pager.hasNextPage
-    }
-
-    /**
-     * Sets the display mode.
-     *
-     * @param asList whether the current mode is in list or not.
-     */
-    private fun setDisplayMode(asList: Boolean) {
-        isListMode = asList
-        subscribeToMangaInitializer()
     }
 
     /**
@@ -295,13 +278,6 @@ open class BrowseCataloguePresenter(
         val downloadManager: DownloadManager = Injekt.get()
         downloadManager.deleteManga(manga, source)
         db.resetMangaInfo(manga).executeAsBlocking()
-    }
-
-    /**
-     * Changes the active display mode.
-     */
-    fun swapDisplayMode() {
-        prefs.catalogueAsList().set(!isListMode)
     }
 
     /**

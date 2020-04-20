@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!--
+<?xml version="1.0" encoding="utf-8"?><!--
 ~ Copyright (C) 2019 The Android Open Source Project
 ~
 ~ Licensed under the Apache License, Version 2.0 (the "License");
@@ -16,21 +15,31 @@
 -->
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!--Top level DayNight theme to be used in AndroidManifest.xml-->
-    <style name="Theme.MyApp" parent="Base.Theme.MyApp">
+
+    <style name="Neko.Night" parent="Theme.Neko" />
+
+    <style name="Theme.Neko" parent="Base.Theme.Neko">
         <!--Material color attributes (dark theme) -->
         <item name="colorPrimary">@color/md_white_1000</item>
-        <item name="colorPrimaryVariant">@color/md_white_1000_70</item>
-        <item name="colorSecondary">@color/md_white_1000</item>
-        <item name="colorSecondaryVariant">@color/md_white_1000_70</item>
-        <item name="android:colorBackground">@color/black_900</item>
-        <item name="colorSurface">@color/black_800</item>
+        <item name="colorPrimaryVariant">@color/md_white_1000</item>
+        <item name="colorSecondary">@color/dark_grey</item>
+        <item name="colorSecondaryVariant">@color/dark_grey</item>
+
+        <item name="android:colorBackground">@color/md_black_1000</item>
+        <item name="colorSurface">@color/md_black_1000</item>
+        <item name="colorOnPrimarySurface">@color/md_white_1000_70</item>
+
         <item name="colorError">@color/red_200</item>
         <item name="colorOnPrimary">@color/md_black_1000</item>
-        <item name="colorOnSecondary">@color/md_black_1000</item>
-        <item name="colorOnBackground">@color/white_50</item>
-        <item name="colorOnSurface">@color/white_50</item>
+        <item name="colorOnSecondary">@color/md_white_1000</item>
+        <item name="colorOnBackground">@color/md_white_1000</item>
+        <item name="colorOnSurface">@color/md_white_1000</item>
         <item name="colorOnError">@color/md_black_1000</item>
         <item name="android:windowLightStatusBar" tools:targetApi="m">false</item>
         <item name="android:windowLightNavigationBar" tools:ignore="NewApi">false</item>
+        <item name="android:windowBackground">@color/md_black_1000</item>
+        <item name="actionModeShadow">@color/md_black_1000_54</item>
+
     </style>
+
 </resources>

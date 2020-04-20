@@ -15,9 +15,9 @@
 -->
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!--Top level DayNight theme to be used in AndroidManifest.xml-->
-    <style name="Theme.MyApp" parent="Base.Theme.MyApp" />
+    <style name="Theme.Neko" parent="Base.Theme.Neko" />
     <!--Base custom theme which will be shared between both light and dark theme variants-->
-    <style name="Base.Theme.MyApp" parent="Base.Theme.MaterialThemeBuilder">
+    <style name="Base.Theme.Neko" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <!--Material color attributes (light theme) -->
         <!--colorPrimary colors map to components and elements, such as app bars and buttons. -->
         <!--colorSecondary colors are most often used as accents on components, such as FABs and -->
@@ -27,7 +27,7 @@
         <item name="colorPrimary">@color/md_black_1000</item>
         <item name="colorPrimaryVariant">@color/md_black_1000</item>
         <item name="colorSecondary">@color/md_black_1000</item>
-        <item name="colorSecondaryVariant">@color/md_black_1000_70</item>
+        <item name="colorSecondaryVariant">@color/md_black_1000</item>
         <!--colorBackground appears behind scrollable content and is used for the default window-->
         <!--background. colorSurface is mapped to the surface of components such as cards, sheets-->
         <!--and menus. colorError is used to indicate an error state for components such as-->
@@ -69,19 +69,27 @@
         </item>
         <item name="bottomSheetDialogTheme">@style/ThemeOverlay.MyTheme.BottomSheetDialog</item>
         <item name="navigationViewStyle">@style/Widget.MyTheme.NavigationView</item>
-        <item name="toolbarStyle">@style/Widget.MaterialComponents.Toolbar.PrimarySurface</item>
-    </style>
 
-    <style name="Base.Theme.MaterialThemeBuilder" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <item name="android:statusBarColor" tools:ignore="NewApi">?attr/colorSurface</item>
         <item name="android:windowLightStatusBar" tools:ignore="NewApi">true</item>
         <item name="android:windowLightNavigationBar" tools:ignore="NewApi">true</item>
         <item name="android:navigationBarDividerColor" tools:ignore="NewApi">
             ?attr/colorControlHighlight
         </item>
+
+
+        <item name="windowActionModeOverlay">true</item>
+        <item name="actionModeStyle">@style/CustomActionModeStyle</item>
+        <item name="actionModeShadow">@color/md_black_1000_38</item>
+
+
+        <item name="android:divider">@android:color/transparent</item>
+        <item name="android:listDivider">@android:color/transparent</item>
+        <item name="preferenceTheme">@style/PreferenceThemeOverlay</item>
+
     </style>
 
-    <style name="Theme.Splash" parent="Theme.MyApp">
+    <style name="Theme.Splash" parent="Theme.Neko">
         <item name="android:windowBackground">@drawable/splash_background</item>
         <item name="android:statusBarColor">@color/md_black_1000</item>
         <item name="android:navigationBarColor">@color/md_black_1000</item>

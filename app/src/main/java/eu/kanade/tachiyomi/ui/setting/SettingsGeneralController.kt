@@ -1,5 +1,6 @@
 package eu.kanade.tachiyomi.ui.setting
 
+import androidx.appcompat.app.AppCompatDelegate
 import androidx.biometric.BiometricManager
 import androidx.preference.PreferenceScreen
 import eu.kanade.tachiyomi.BuildConfig
@@ -7,6 +8,7 @@ import eu.kanade.tachiyomi.R
 import eu.kanade.tachiyomi.data.preference.getOrDefault
 import eu.kanade.tachiyomi.data.updater.UpdaterJob
 import eu.kanade.tachiyomi.ui.security.SecureActivityDelegate
+import eu.kanade.tachiyomi.util.system.ThemeUtil
 import eu.kanade.tachiyomi.widget.preference.IntListMatPreference
 import eu.kanade.tachiyomi.data.preference.PreferenceKeys as Keys
 
@@ -28,8 +30,8 @@ class SettingsGeneralController : SettingsController() {
             entryValues = listOf(1, 2, 3)
             defaultValue = 1
 
-            onChange {
-                activity?.recreate()
+            onChange { newValue ->
+                AppCompatDelegate.setDefaultNightMode(ThemeUtil.nightMode(newValue as Int))
                 true
             }
         }

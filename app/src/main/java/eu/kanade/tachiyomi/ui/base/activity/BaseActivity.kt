@@ -16,9 +16,8 @@ abstract class BaseActivity : AppCompatActivity() {
     val preferences: PreferencesHelper by injectLazy()
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        setTheme(R.style.Theme_Neko)
         AppCompatDelegate.setDefaultNightMode(ThemeUtil.nightMode(preferences.theme()))
-        val theme = preferences.theme()
-        setTheme(R.style.Base_Theme_MyApp)
         super.onCreate(savedInstanceState)
         SecureActivityDelegate.setSecure(this)
     }

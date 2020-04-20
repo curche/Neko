@@ -327,6 +327,7 @@ class MangaDetailsController : BaseController,
             override fun onScrollStateChanged(recyclerView: RecyclerView, newState: Int) {
                 super.onScrollStateChanged(recyclerView, newState)
                 val atTop = !recycler.canScrollVertically(-1)
+
                 if (newState == RecyclerView.SCROLL_STATE_IDLE && !isTablet) {
                     if (router?.backstack?.lastOrNull()
                             ?.controller() == this@MangaDetailsController && statusBarHeight > -1 && activity != null &&
@@ -404,7 +405,7 @@ class MangaDetailsController : BaseController,
             return
         }
         val color =
-            coverColor ?: activity!!.getResourceColor(R.attr.colorPrimaryVariant)
+            coverColor ?: activity!!.getResourceColor(R.attr.colorPrimary)
         val colorFrom =
             if (colorAnimator?.isRunning == true) activity?.window?.statusBarColor
                 ?: color
@@ -542,16 +543,13 @@ class MangaDetailsController : BaseController,
             }
             colorAnimator?.cancel()
 
-            val colorSecondary = activity?.getResourceColor(
-                R.attr.colorSecondary
+            val colorOnPrimary = activity?.getResourceColor(
+                R.attr.colorOnPrimary
             ) ?: Color.BLACK
-            (activity as MainActivity).appbar.setBackgroundColor(colorSecondary)
-            (activity as MainActivity).toolbar.setBackgroundColor(colorSecondary)
+            (activity as MainActivity).appbar.setBackgroundColor(colorOnPrimary)
+            (activity as MainActivity).toolbar.setBackgroundColor(colorOnPrimary)
 
-            activity?.window?.statusBarColor = activity?.getResourceColor(
-                android.R.attr
-                    .statusBarColor
-            ) ?: colorSecondary
+            activity?.window?.statusBarColor = colorOnPrimary
         }
     }
 

@@ -305,7 +305,7 @@ open class MainActivity : BaseActivity(), DownloadServiceListener, MangadexLogin
             delay(100)
             if (Color.alpha(window?.statusBarColor ?: Color.BLACK) >= 255) window?.statusBarColor =
                 getResourceColor(
-                    R.attr.colorPrimary
+                    R.attr.colorOnPrimary
                 )
         }
         super.onSupportActionModeFinished(mode)

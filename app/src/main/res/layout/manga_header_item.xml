@@ -181,6 +181,7 @@
             android:tooltipText="@string/tracking"
             tools:src="@drawable/ic_open_in_webview_white_24dp" />
 
+
         <ImageView
             android:id="@+id/similar_button"
             android:layout_width="wrap_content"
@@ -191,6 +192,7 @@
             android:padding="5dp"
             android:tooltipText="@string/similar_manga"
             tools:src="@drawable/ic_open_in_webview_white_24dp" />
+
 
         <ImageView
             android:id="@+id/webview_button"
@@ -204,6 +206,7 @@
             android:tooltipText="@string/open_external"
             tools:src="@drawable/ic_open_in_webview_white_24dp" />
 
+
         <ImageView
             android:id="@+id/share_button"
             android:layout_width="wrap_content"
@@ -213,8 +216,10 @@
             android:layout_marginEnd="6dp"
             android:contentDescription="@string/share"
             android:padding="5dp"
+            style="@style/Neko.Iconics"
             android:tooltipText="@string/share"
             tools:src="@drawable/ic_open_in_webview_white_24dp" />
+
 
     </LinearLayout>
 
@@ -236,7 +241,7 @@
 
     <TextView
         android:id="@+id/manga_summary"
-        style="@style/TextAppearance.MyTheme.Body2"
+        style="@style/TextAppearance.MyTheme.Body1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
@@ -245,6 +250,7 @@
         android:clickable="true"
         android:focusable="true"
         android:maxLines="3"
+        android:textSize="14sp"
         android:textColor="@color/material_on_background_emphasis_medium"
         app:layout_constraintBottom_toTopOf="@id/manga_genres_tags"
         app:layout_constraintEnd_toEndOf="parent"

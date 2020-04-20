@@ -44,10 +44,14 @@
 
     <style name="Widget.Neko.OutlineButton" parent="Widget.MaterialComponents.Button.OutlinedButton">
         <item name="android:textAllCaps">false</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">40dp</item>
+        <item name="android:letterSpacing">0.0</item>
         <item name="fontFamily">@font/metropolis_medium</item>
-        <item name="iconTint">?attr/colorOnBackground</item>
-        <item name="android:textColor">?attr/colorOnBackground</item>
-        <item name="cornerRadius">20dp</item>
+        <item name="iconTint">?attr/colorPrimary</item>
+        <item name="android:textColor">?attr/colorPrimary</item>
+        <item name="cornerRadius">5dp</item>
+        <item name="strokeColor">?attr/colorPrimary</item>
     </style>
 
     <style name="Widget.Neko.Generic" parent="">
@@ -60,19 +64,62 @@
         <item name="titleTextColor">?attr/colorOnSurface</item>
         <item name="subtitleTextColor">?attr/colorOnSurface</item>
         <item name="android:theme">@style/ThemeOverlay.Neko.Appbar</item>
-        <item name="popupTheme">@style/ThemeOverlay.MaterialComponents.Light</item>
     </style>
 
     <style name="ThemeOverlay.Neko.Appbar" parent="">
         <item name="colorControlNormal">?attr/colorOnSurface</item>
         <item name="actionMenuTextColor">?attr/colorOnSurface</item>
         <item name="buttonTint">?attr/colorOnSurface</item>
+        <item name="iconTint">?attr/colorOnSurface</item>
         <item name="android:textColorHint">@color/material_on_surface_emphasis_high_type</item>
+    </style>
+
+    <style name="Neko.Iconics" parent="">
+        <item name="iiv_size">24dp</item>
+        <item name="iiv_color">?attr/colorPrimary</item>
+        <item name="iiv_checked_color">?attr/colorPrimary</item>
+        <item name="iiv_unchecked_color">?attr/colorPrimary</item>
+        <item name="iiv_checked_size">24dp</item>
+        <item name="iiv_unchecked_size">24dp</item>
+        <item name="android:background">@android:color/transparent</item>
     </style>
 
     <!--Navigation Drawer-->
     <style name="Widget.MyTheme.NavigationView" parent="Widget.MaterialComponents.NavigationView">
         <item name="itemTextAppearance">?attr/textAppearanceBody2</item>
+    </style>
+
+
+    <style name="ThemeOverlay.Neko.BottomNavigation" parent="ThemeOverlay.MaterialComponents">
+        <item name="colorSurface">@null</item>
+    </style>
+
+    <style name="PreferenceThemeOverlay">
+        <item name="android:scrollbars">vertical</item>
+        <item name="checkBoxPreferenceStyle">@style/Preference.CheckBoxPreference.Material</item>
+        <item name="dialogPreferenceStyle">@style/Preference.DialogPreference.Material</item>
+        <item name="dropdownPreferenceStyle">@style/Preference.DropDown.Material</item>
+        <item name="editTextPreferenceStyle">
+            @style/Preference.DialogPreference.EditTextPreference.Material
+        </item>
+        <item name="preferenceCategoryStyle">@style/Preference.Category.Material</item>
+        <item name="preferenceFragmentCompatStyle">@style/PreferenceFragment.Material</item>
+        <item name="preferenceFragmentListStyle">@style/PreferenceFragmentList.Material</item>
+        <item name="preferenceFragmentStyle">@style/PreferenceFragment.Material</item>
+        <item name="preferenceScreenStyle">@style/Preference.PreferenceScreen.Material</item>
+        <item name="preferenceStyle">@style/Preference.Material</item>
+        <item name="seekBarPreferenceStyle">@style/Preference.SeekBarPreference.Material</item>
+        <item name="switchPreferenceCompatStyle">@style/Preference.SwitchPreferenceCompat.Material
+        </item>
+        <item name="switchPreferenceStyle">@style/Preference.SwitchPreference.Material</item>
+        <item name="preferenceCategoryTitleTextAppearance">@style/TextAppearance.MyTheme.Body2
+        </item>
+    </style>
+
+    <style name="CustomActionModeStyle" parent="Base.Widget.AppCompat.ActionMode">
+        <item name="android:statusBarColor">?attr/colorSecondary</item>
+        <item name="background">@drawable/action_mode_bg</item>
+        <item name="iconTint">?attr/colorPrimary</item>
     </style>
 
 </resources>

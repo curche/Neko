@@ -20,7 +20,7 @@ class DrawableHelper {
         private fun icon(context: Context, icon: IIcon, dp: Int) =
             IconicsDrawable(context, icon).apply {
                 sizeDp = dp
-                colorInt = context.getResourceColor(R.attr.colorOnBackground)
+                colorInt = context.getResourceColor(R.attr.colorPrimary)
             }
     }
 }

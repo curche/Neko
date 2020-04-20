@@ -8,8 +8,6 @@ import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.widget.SearchView
-import androidx.recyclerview.widget.DividerItemDecoration
-import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.snackbar.BaseTransientBottomBar
 import com.google.android.material.snackbar.Snackbar
@@ -31,7 +29,6 @@ import eu.kanade.tachiyomi.ui.library.ChangeMangaCategoriesDialog
 import eu.kanade.tachiyomi.ui.main.MainActivity
 import eu.kanade.tachiyomi.ui.manga.MangaDetailsController
 import eu.kanade.tachiyomi.ui.webview.WebViewActivity
-import eu.kanade.tachiyomi.util.system.connectivityManager
 import eu.kanade.tachiyomi.util.system.dpToPx
 import eu.kanade.tachiyomi.util.view.applyWindowInsetsForRootController
 import eu.kanade.tachiyomi.util.view.gone
@@ -134,7 +131,7 @@ open class BrowseCatalogueController(bundle: Bundle) :
         if (bundle?.getBoolean(APPLY_INSET) == true) {
             view.applyWindowInsetsForRootController(activity!!.bottom_nav)
         }
-        
+
         // Initialize adapter, scroll listener and recycler views
         adapter = FlexibleAdapter(null, this)
         setupRecycler(view)
@@ -165,17 +162,7 @@ open class BrowseCatalogueController(bundle: Bundle) :
             catalogue_view?.removeView(oldRecycler)
         }
 
-        val recycler = if (presenter.isListMode) {
-            RecyclerView(view.context).apply {
-                id = R.id.recycler
-                layoutManager = LinearLayoutManager(context)
-                layoutParams = RecyclerView.LayoutParams(
-                    ViewGroup.LayoutParams.MATCH_PARENT,
-                    ViewGroup.LayoutParams.MATCH_PARENT
-                )
-                addItemDecoration(DividerItemDecoration(context, DividerItemDecoration.VERTICAL))
-            }
-        } else {
+        val recycler =
             (catalogue_view.inflate(R.layout.catalogue_recycler_autofit) as AutofitRecyclerView).apply {
                 columnWidth = when (preferences.gridSize().getOrDefault()) {
                     0 -> 1f
@@ -192,8 +179,8 @@ open class BrowseCatalogueController(bundle: Bundle) :
                             }
                         }
                     }
+
             }
-        }
         recycler.clipToPadding = false
         recycler.setHasFixedSize(true)
         recycler.adapter = adapter
@@ -263,15 +250,6 @@ open class BrowseCatalogueController(bundle: Bundle) :
                 true
             }
         )
-
-        // Show next display mode
-        menu.findItem(R.id.action_display_mode).apply {
-            val icon = if (presenter.isListMode)
-                R.drawable.ic_view_module_white_24dp
-            else
-                R.drawable.ic_view_list_white_24dp
-            setIcon(icon)
-        }
     }
 
     override fun onPrepareOptionsMenu(menu: Menu) {
@@ -284,7 +262,6 @@ open class BrowseCatalogueController(bundle: Bundle) :
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
             R.id.action_search -> expandActionViewFromInteraction = true
-            R.id.action_display_mode -> swapDisplayMode()
             R.id.action_open_in_web_view -> openInWebView()
             else -> return super.onOptionsItemSelected(item)
         }
@@ -458,26 +435,6 @@ open class BrowseCatalogueController(bundle: Bundle) :
      */
     fun onMangaInitialized(manga: Manga) {
         getHolder(manga)?.setImage(manga)
-    }
-
-    /**
-     * Swaps the current display mode.
-     */
-    fun swapDisplayMode() {
-        val view = view ?: return
-        val adapter = adapter ?: return
-
-        presenter.swapDisplayMode()
-        val isListMode = presenter.isListMode
-        activity?.invalidateOptionsMenu()
-        setupRecycler(view)
-        if (!isListMode || !view.context.connectivityManager.isActiveNetworkMetered) {
-            // Initialize mangas if going to grid view or if over wifi when going to list view
-            val mangas = (0 until adapter.itemCount).mapNotNull {
-                (adapter.getItem(it) as? CatalogueItem)?.manga
-            }
-            presenter.initializeMangas(mangas)
-        }
     }
 
     /**

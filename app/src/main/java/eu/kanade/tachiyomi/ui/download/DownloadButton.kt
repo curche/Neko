@@ -2,7 +2,6 @@ package eu.kanade.tachiyomi.ui.download
 
 import android.animation.ObjectAnimator
 import android.content.Context
-import android.graphics.Color
 import android.util.AttributeSet
 import android.widget.FrameLayout
 import androidx.core.content.ContextCompat
@@ -16,7 +15,8 @@ import kotlinx.android.synthetic.main.download_button.view.*
 class DownloadButton @JvmOverloads constructor(context: Context, attrs: AttributeSet? = null) :
     FrameLayout(context, attrs) {
 
-    private val activeColor = context.getResourceColor(R.attr.colorAccent)
+    private val activeColor = context.getResourceColor(R.attr.colorOnBackground)
+    private val checkedColor = context.getResourceColor(R.attr.colorOnPrimary)
     private val progressBGColor = ContextCompat.getColor(
         context,
         R.color.divider
@@ -66,7 +66,7 @@ class DownloadButton @JvmOverloads constructor(context: Context, attrs: Attribut
                 download_progress_indeterminate.gone()
                 download_border.setImageDrawable(filledCircle)
                 download_border.drawable.setTint(activeColor)
-                download_icon.drawable.setTint(Color.WHITE)
+                download_icon.drawable.setTint(checkedColor)
             }
             Download.NOT_DOWNLOADED -> {
                 download_border.visible()
@@ -92,7 +92,7 @@ class DownloadButton @JvmOverloads constructor(context: Context, attrs: Attribut
                 download_progress.progress = progress
                 download_border.drawable.setTint(progressBGColor)
                 download_progress.progressDrawable?.setTint(downloadedColor)
-                download_icon.drawable.setTint(disabledColor)
+                download_icon.drawable.setTint(activeColor)
                 if (!isAnimating) {
                     iconAnimation = ObjectAnimator.ofFloat(download_icon, "alpha", 1f, 0f).apply {
                         duration = 1000
@@ -109,7 +109,7 @@ class DownloadButton @JvmOverloads constructor(context: Context, attrs: Attribut
                 download_progress_indeterminate.gone()
                 download_border.setImageDrawable(filledCircle)
                 download_border.drawable.setTint(downloadedColor)
-                download_icon.drawable.setTint(Color.WHITE)
+                download_icon.drawable.setTint(checkedColor)
             }
             Download.ERROR -> {
                 download_progress.gone()

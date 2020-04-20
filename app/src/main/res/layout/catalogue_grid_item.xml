@@ -137,7 +137,6 @@
                 android:ellipsize="end"
                 android:maxLines="2"
                 android:textSize="13sp"
-                android:textColor="?attr/colorOnBackground"
                 app:layout_constraintBottom_toTopOf="@+id/subtitle"
                 tools:text="Sample name" />
 

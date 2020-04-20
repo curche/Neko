@@ -69,6 +69,7 @@
 
     <style name="TextAppearance.MyTheme.Headline6" parent="TextAppearance.MaterialComponents.Headline6">
         <item name="fontFamily">@font/metropolis_medium</item>
+        <item name="android:letterSpacing">0.0025</item>
         <item name="android:textColor">?attr/colorOnBackground</item>
         <!--Your custom type style here-->
     </style>

@@ -22,4 +22,5 @@
     <attr name="snackbar_background" format="reference|integer" />
     <attr name="snackbar_text" format="reference|integer" />
     <attr name="badgeColor" format="reference|integer" />
+    <attr name="actionModeShadow" format="reference|integer" />
 </resources>

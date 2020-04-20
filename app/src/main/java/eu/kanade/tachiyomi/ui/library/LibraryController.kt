@@ -183,9 +183,7 @@ open class LibraryController(
                     }
                 }
                 RecyclerView.SCROLL_STATE_IDLE -> {
-                    scrollAnim = fast_scroller.animate().setStartDelay(1000).setDuration(250)
-                        .translationX(25f.dpToPx)
-                    scrollAnim?.start()
+                    hideScroller()
                 }
             }
         }

@@ -862,6 +862,7 @@ class MangaDetailsController : BaseController,
     }
 
     fun openInWebView(url: String) {
+        externalBottomSheet?.hide()
         val activity = activity ?: return
         val intent = WebViewActivity.newIntent(
             activity.applicationContext, presenter.source.id, url, presenter.manga

@@ -54,6 +54,7 @@
         <item name="strokeColor">?attr/colorPrimary</item>
     </style>
 
+
     <style name="Widget.Neko.Generic" parent="">
         <item name="buttonTint">?attr/colorOnBackground</item>
         <item name="android:textColor">?attr/colorOnBackground</item>
@@ -112,7 +113,7 @@
         <item name="switchPreferenceCompatStyle">@style/Preference.SwitchPreferenceCompat.Material
         </item>
         <item name="switchPreferenceStyle">@style/Preference.SwitchPreference.Material</item>
-        <item name="preferenceCategoryTitleTextAppearance">@style/TextAppearance.MyTheme.Body2
+        <item name="preferenceCategoryTitleTextAppearance">@style/TextAppearance.MyTheme.Headline5
         </item>
     </style>
 

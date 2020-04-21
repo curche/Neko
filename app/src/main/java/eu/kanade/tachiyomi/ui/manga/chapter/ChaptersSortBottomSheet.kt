@@ -19,7 +19,7 @@ import kotlinx.android.synthetic.main.chapter_sort_bottom_sheet.*
 import kotlin.math.max
 
 class ChaptersSortBottomSheet(controller: MangaDetailsController) : BottomSheetDialog
-    (controller.activity!!) {
+    (controller.activity!!, R.style.BottomSheetDialogTheme) {
 
     val activity = controller.activity!!
 

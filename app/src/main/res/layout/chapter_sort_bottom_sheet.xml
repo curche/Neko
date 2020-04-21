@@ -34,7 +34,8 @@
 
                 <com.google.android.material.button.MaterialButton
                     android:id="@+id/set_as_default_sort"
-                    style="@style/Widget.MaterialComponents.Button.TextButton"
+                    style="@style/Widget.Neko.TextButton"
+                    android:textAllCaps="true"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/set_as_default_for_all" />
@@ -53,6 +54,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
+                    style="@style/Widget.Neko.Generic"
                     android:text="@string/newest_first" />
 
                 <com.google.android.material.radiobutton.MaterialRadioButton
@@ -60,7 +62,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="12dp"
-
+                    style="@style/Widget.Neko.Generic"
                     android:layout_weight="1"
                     android:text="@string/oldest_first" />
             </RadioGroup>
@@ -80,6 +82,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="12dp"
                 android:layout_marginEnd="12dp"
+                style="@style/Widget.Neko.Generic"
                 android:text="@string/show_all" />
 
             <com.google.android.material.checkbox.MaterialCheckBox
@@ -88,6 +91,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="12dp"
                 android:layout_marginEnd="12dp"
+                style="@style/Widget.Neko.Generic"
                 android:text="@string/show_read_chapters" />
 
             <com.google.android.material.checkbox.MaterialCheckBox
@@ -96,6 +100,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="12dp"
                 android:layout_marginEnd="12dp"
+                style="@style/Widget.Neko.Generic"
                 android:text="@string/show_unread_chapters" />
 
             <com.google.android.material.checkbox.MaterialCheckBox
@@ -104,6 +109,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="12dp"
                 android:layout_marginEnd="12dp"
+                style="@style/Widget.Neko.Generic"
                 android:text="@string/show_downloaded_chapters" />
 
             <com.google.android.material.checkbox.MaterialCheckBox
@@ -112,6 +118,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="12dp"
                 android:layout_marginEnd="12dp"
+                style="@style/Widget.Neko.Generic"
                 android:text="@string/show_bookmarked_chapters" />
 
             <com.google.android.material.textview.MaterialTextView
@@ -135,12 +142,14 @@
                     android:id="@+id/sort_by_source"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    style="@style/Widget.Neko.Generic"
                     android:text="@string/sort_by_source_s_order" />
 
                 <com.google.android.material.radiobutton.MaterialRadioButton
                     android:id="@+id/sort_by_number"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    style="@style/Widget.Neko.Generic"
                     android:text="@string/sort_by_chapter_number" />
             </RadioGroup>
 
@@ -150,6 +159,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="12dp"
                 android:layout_marginEnd="12dp"
+                style="@style/Widget.Neko.Generic"
                 android:text="@string/hide_chapter_titles" />
 
         </LinearLayout>

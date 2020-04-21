@@ -342,7 +342,7 @@ fun Controller.scrollViewWith(
     val attrsArray = intArrayOf(android.R.attr.actionBarSize)
     val array = recycler.context.obtainStyledAttributes(attrsArray)
     var appBarHeight = if (activity!!.toolbar.height > 0) activity!!.toolbar.height
-        else array.getDimensionPixelSize(0, 0)
+    else array.getDimensionPixelSize(0, 0)
     array.recycle()
     swipeRefreshLayout?.setDistanceToTriggerSync(150.dpToPx)
     activity!!.toolbar.post {
@@ -407,7 +407,8 @@ fun Controller.scrollViewWith(
                         activity!!.appbar.y, -activity!!.appbar.height.toFloat(), 0f
                     )
                     if ((activity!!.appbar.y <= -activity!!.appbar.height.toFloat() ||
-                            dy == 0 && activity!!.appbar.y == 0f) && !elevate)
+                            dy == 0 && activity!!.appbar.y == 0f) && !elevate
+                    )
                         elevateFunc(true)
                 }
             }
@@ -429,9 +430,9 @@ fun Controller.scrollViewWith(
                             .findFirstVisibleItemPosition() < 2 && !skipFirstSnap) ||
                         !recycler.canScrollVertically(-1)
                     activity!!.appbar.animate().y(
-                            if (closerToTop && !atTop) (-activity!!.appbar.height.toFloat())
-                            else 0f
-                        ).setDuration(shortAnimationDuration.toLong()).start()
+                        if (closerToTop && !atTop) (-activity!!.appbar.height.toFloat())
+                        else 0f
+                    ).setDuration(shortAnimationDuration.toLong()).start()
                     if (recycler.canScrollVertically(-1) && !elevate)
                         elevateFunc(true)
                     else if (!recycler.canScrollVertically(-1) && elevate)
@@ -493,8 +494,8 @@ fun setBottomEdge(view: View, activity: Activity) {
 }
 
 fun SwipeRefreshLayout.setStyle() {
-    setColorSchemeColors(context.getResourceColor(R.attr.actionBarTintColor))
-    setProgressBackgroundColorSchemeColor(context.getResourceColor(R.attr.colorPrimaryVariant))
+    setColorSchemeColors(context.getResourceColor(R.attr.colorOnPrimary))
+    setProgressBackgroundColorSchemeColor(context.getResourceColor(R.attr.colorPrimary))
 }
 
 fun MaterialButton.resetStrokeColor() {

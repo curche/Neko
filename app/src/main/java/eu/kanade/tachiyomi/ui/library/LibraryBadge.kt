@@ -22,11 +22,11 @@ class LibraryBadge @JvmOverloads constructor(context: Context, attrs: AttributeS
                 if (unread == -1 && !showTotalChapters)
                     context.getResourceColor(R.attr.colorPrimary)
                 else if (showTotalChapters)
-                    ContextCompat.getColor(context, R.color.md_white_1000)
+                    ContextCompat.getColor(context, R.color.md_black_1000)
                 else context.getResourceColor(R.attr.colorOnPrimary)
             )
             setBackgroundColor(
-                if (showTotalChapters) ContextCompat.getColor(context, R.color.red_600)
+                if (showTotalChapters) ContextCompat.getColor(context, R.color.neko_green)
                 else context.getResourceColor(R.attr.colorPrimary)
             )
             visibility = when {
@@ -53,7 +53,7 @@ class LibraryBadge @JvmOverloads constructor(context: Context, attrs: AttributeS
                 .visibility != View.GONE
         ) View.VISIBLE else View.GONE
         unread_angle.setColorFilter(
-            if (showTotalChapters) ContextCompat.getColor(context, R.color.red_600)
+            if (showTotalChapters) ContextCompat.getColor(context, R.color.neko_green)
             else context.getResourceColor(R.attr.colorPrimary)
         )
         if (unread_angle.visibility == View.VISIBLE) {

@@ -91,8 +91,8 @@
 
     <style name="Theme.Splash" parent="Theme.Neko">
         <item name="android:windowBackground">@drawable/splash_background</item>
-        <item name="android:statusBarColor">@color/md_black_1000</item>
-        <item name="android:navigationBarColor">@color/md_black_1000</item>
+        <item name="android:statusBarColor">@color/neko_green</item>
+        <item name="android:navigationBarColor">@color/neko_green</item>
         <item name="android:windowLightStatusBar">false</item>
         <item name="android:windowLightNavigationBar" tools:targetApi="27">false</item>
     </style>

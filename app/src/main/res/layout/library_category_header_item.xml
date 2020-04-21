@@ -66,6 +66,7 @@
         android:clickable="true"
         android:focusable="true"
         android:padding="5dp"
+        android:tint="?attr/colorPrimary"
         android:src="@drawable/ic_refresh_white_24dp"
         app:layout_constraintBottom_toBottomOf="@id/category_title"
         app:layout_constraintEnd_toStartOf="@id/space"

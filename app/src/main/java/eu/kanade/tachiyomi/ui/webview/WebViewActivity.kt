@@ -15,7 +15,6 @@ import android.view.ViewGroup
 import android.webkit.WebChromeClient
 import android.webkit.WebView
 import android.widget.LinearLayout
-import androidx.appcompat.app.AppCompatDelegate
 import androidx.core.graphics.ColorUtils
 import eu.kanade.tachiyomi.R
 import eu.kanade.tachiyomi.source.SourceManager
@@ -56,11 +55,11 @@ class WebViewActivity : BaseActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        delegate.localNightMode = when (preferences.theme()) {
-            1, 8 -> AppCompatDelegate.MODE_NIGHT_NO
-            2, 3, 4 -> AppCompatDelegate.MODE_NIGHT_YES
+        /*delegate.localNightMode = when (preferences.theme()) {
+            2 -> AppCompatDelegate.MODE_NIGHT_NO
+            3 -> AppCompatDelegate.MODE_NIGHT_YES
             else -> AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM
-        }
+        }*/
         setContentView(R.layout.webview_activity)
         title = intent.extras?.getString(TITLE_KEY)
         setSupportActionBar(toolbar)
@@ -68,7 +67,6 @@ class WebViewActivity : BaseActivity() {
         toolbar.setNavigationOnClickListener {
             super.onBackPressed()
         }
-        toolbar.navigationIcon?.setTint(getResourceColor(R.attr.colorOnPrimary))
 
         val container: ViewGroup = findViewById(R.id.web_view_layout)
         val content: LinearLayout = findViewById(R.id.web_linear_layout)

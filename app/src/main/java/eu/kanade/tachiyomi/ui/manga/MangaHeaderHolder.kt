@@ -174,44 +174,6 @@ class MangaHeaderHolder(
                 ?: itemView.context.getResourceColor(android.R.attr.colorBackground)
         )
 
-        val tracked = presenter.isTracked() && !item.isLocked
-
-        with(track_button) {
-            setImageDrawable(
-                DrawableHelper.standardIcon32(
-                    itemView.context,
-                    MaterialDesignDx.Icon.gmf_art_track
-                )
-            )
-        }
-
-        with(similar_button) {
-            visibleIf(presenter.similarEnabled())
-            setImageDrawable(
-                DrawableHelper.standardIcon24(
-                    itemView.context,
-                    MaterialDesignDx.Icon.gmf_account_tree
-                )
-            )
-        }
-
-        with(webview_button) {
-            setImageDrawable(
-                DrawableHelper.standardIcon24(
-                    itemView.context,
-                    CommunityMaterial.Icon2.cmd_web
-                )
-            )
-        }
-        with(share_button) {
-            setImageDrawable(
-                DrawableHelper.standardIcon24(
-                    itemView.context,
-                    MaterialDesignDx.Icon.gmf_share
-                )
-            )
-        }
-
         with(start_reading_button) {
             val nextChapter = presenter.getNextUnreadChapter()
             visibleIf(presenter.chapters.isNotEmpty() && !item.isLocked)

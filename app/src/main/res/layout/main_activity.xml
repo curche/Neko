@@ -52,7 +52,7 @@
                     android:gravity="start"
                     android:maxLines="1"
                     android:textColor="?attr/colorOnSurface"
-                    android:fontFamily="@font/metropolis_medium"
+                    app:fontFamily="@font/metropolis_medium"
                     android:textSize="20sp"
                     tools:text="Title Text" />
             </LinearLayout>

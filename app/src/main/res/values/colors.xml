@@ -51,6 +51,12 @@
     <color name="md_white_1000_38">#61FFFFFF</color>
 
     <color name="neko_green">#3DDA83</color>
+    <color name="unread_badge">@color/md_black_1000</color>
+    <color name="unread_badge_text">@color/md_white_1000</color>
+    <color name="download_badge">@color/unread_badge_text</color>
+    <color name="download_badge_text">@color/unread_badge</color>
+    <color name="total_badge">@color/neko_green</color>
+    <color name="total_badge_text">@color/md_black_1000</color>
 
 
 </resources>

@@ -18,7 +18,7 @@ import eu.kanade.tachiyomi.data.preference.getOrDefault
 import eu.kanade.tachiyomi.util.system.dpToPx
 import eu.kanade.tachiyomi.util.view.updateLayoutParams
 import eu.kanade.tachiyomi.widget.AutofitRecyclerView
-import kotlinx.android.synthetic.main.catalogue_grid_item.view.*
+import kotlinx.android.synthetic.main.manga_grid_item.view.*
 
 class CatalogueItem(
     val manga: Manga,
@@ -26,7 +26,7 @@ class CatalogueItem(
 ) :
     AbstractFlexibleItem<CatalogueHolder>() {
 
-    override fun getLayoutRes(): Int = R.layout.catalogue_grid_item
+    override fun getLayoutRes(): Int = R.layout.manga_grid_item
 
     override fun createViewHolder(
         view: View,

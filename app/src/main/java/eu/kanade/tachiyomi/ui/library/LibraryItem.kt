@@ -21,7 +21,7 @@ import eu.kanade.tachiyomi.source.SourceManager
 import eu.kanade.tachiyomi.util.system.dpToPx
 import eu.kanade.tachiyomi.util.view.updateLayoutParams
 import eu.kanade.tachiyomi.widget.AutofitRecyclerView
-import kotlinx.android.synthetic.main.catalogue_grid_item.view.*
+import kotlinx.android.synthetic.main.manga_grid_item.view.*
 import uy.kohesive.injekt.injectLazy
 
 class LibraryItem(
@@ -37,57 +37,67 @@ class LibraryItem(
     var unreadType = 2
     var chapterCount = -1
 
-    override fun getLayoutRes(): Int = R.layout.catalogue_grid_item
+    override fun getLayoutRes(): Int {
+        return if (libraryLayout.getOrDefault() == 0 || manga.isBlank())
+            R.layout.manga_list_item
+        else
+            R.layout.manga_grid_item
+    }
 
-    override fun createViewHolder(
-        view: View,
-        adapter: FlexibleAdapter<IFlexible<RecyclerView.ViewHolder>>
-    ): LibraryHolder {
-        val parent = adapter.recyclerView as AutofitRecyclerView
-        val libraryLayout = libraryLayout.getOrDefault()
-        val isFixedSize = fixedSize.getOrDefault()
-        view.apply {
-            val coverHeight = (parent.itemWidth / 3f * 4f).toInt()
-            if (libraryLayout == 1) {
-                gradient.layoutParams = FrameLayout.LayoutParams(
-                    FrameLayout.LayoutParams.MATCH_PARENT,
-                    (coverHeight * 0.66f).toInt(),
-                    Gravity.BOTTOM
-                )
-                card.updateLayoutParams<ConstraintLayout.LayoutParams> {
-                    bottomMargin = 6.dpToPx
-                }
-            } else if (libraryLayout == 2) {
-                constraint_layout.background = ContextCompat.getDrawable(
-                    context, R.drawable.library_item_selector
-                )
-            }
-            if (isFixedSize) {
-                constraint_layout.layoutParams = FrameLayout.LayoutParams(
-                    ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT
-                )
-                cover_thumbnail.maxHeight = Int.MAX_VALUE
-                cover_thumbnail.minimumHeight = 0
-                constraint_layout.minHeight = 0
-                cover_thumbnail.scaleType = ImageView.ScaleType.CENTER_CROP
-                cover_thumbnail.adjustViewBounds = false
-                cover_thumbnail.layoutParams = FrameLayout.LayoutParams(
-                    ViewGroup.LayoutParams.MATCH_PARENT,
-                    (parent.itemWidth / 3f * 3.7f).toInt()
-                )
+    override fun createViewHolder(view: View, adapter: FlexibleAdapter<IFlexible<RecyclerView.ViewHolder>>): LibraryHolder {
+        val parent = adapter.recyclerView
+        return if (parent is AutofitRecyclerView) {
+            val libraryLayout = libraryLayout.getOrDefault()
+            val isFixedSize = fixedSize.getOrDefault()
+            if (libraryLayout == 0 || manga.isBlank()) {
+                LibraryListHolder(view, adapter as LibraryCategoryAdapter, showFastScroll.getOrDefault())
             } else {
-                constraint_layout.minHeight = coverHeight
-                cover_thumbnail.minimumHeight = (parent.itemWidth / 3f * 3.6f).toInt()
-                cover_thumbnail.maxHeight = (parent.itemWidth / 3f * 6f).toInt()
+                view.apply {
+                    val coverHeight = (parent.itemWidth / 3f * 4f).toInt()
+                    if (libraryLayout == 1) {
+                        gradient.layoutParams = FrameLayout.LayoutParams(
+                            FrameLayout.LayoutParams.MATCH_PARENT,
+                            (coverHeight * 0.66f).toInt(),
+                            Gravity.BOTTOM
+                        )
+                        card.updateLayoutParams<ConstraintLayout.LayoutParams> {
+                            bottomMargin = 6.dpToPx
+                        }
+                    } else if (libraryLayout == 2) {
+                        constraint_layout.background = ContextCompat.getDrawable(
+                            context, R.drawable.library_item_selector
+                        )
+                    }
+                    if (isFixedSize) {
+                        constraint_layout.layoutParams = FrameLayout.LayoutParams(
+                            ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT
+                        )
+                        cover_thumbnail.maxHeight = Int.MAX_VALUE
+                        cover_thumbnail.minimumHeight = 0
+                        constraint_layout.minHeight = 0
+                        cover_thumbnail.scaleType = ImageView.ScaleType.CENTER_CROP
+                        cover_thumbnail.adjustViewBounds = false
+                        cover_thumbnail.layoutParams = FrameLayout.LayoutParams(
+                            ViewGroup.LayoutParams.MATCH_PARENT,
+                            (parent.itemWidth / 3f * 3.7f).toInt()
+                        )
+                    } else {
+                        constraint_layout.minHeight = coverHeight
+                        cover_thumbnail.minimumHeight = (parent.itemWidth / 3f * 3.6f).toInt()
+                        cover_thumbnail.maxHeight = (parent.itemWidth / 3f * 6f).toInt()
+                    }
+                }
+                LibraryGridHolder(
+                    view,
+                    adapter as LibraryCategoryAdapter,
+                    parent.itemWidth,
+                    libraryLayout == 1,
+                    isFixedSize
+                )
             }
+        } else {
+            LibraryListHolder(view, adapter as LibraryCategoryAdapter, showFastScroll.getOrDefault())
         }
-        return LibraryGridHolder(
-            view,
-            adapter as LibraryCategoryAdapter,
-            parent.itemWidth,
-            libraryLayout == 1,
-            isFixedSize
-        )
     }
 
     override fun bindViewHolder(

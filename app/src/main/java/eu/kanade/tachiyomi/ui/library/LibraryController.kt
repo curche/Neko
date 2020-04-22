@@ -123,7 +123,8 @@ open class LibraryController(
     lateinit var presenter: LibraryPresenter
         private set
 
-    private var observeLater: Boolean = false
+    private
+    var observeLater: Boolean = false
 
     var snack: Snackbar? = null
 

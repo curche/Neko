@@ -174,7 +174,7 @@ open class BrowseCatalogueController(bundle: Bundle) :
                     object : androidx.recyclerview.widget.GridLayoutManager.SpanSizeLookup() {
                         override fun getSpanSize(position: Int): Int {
                             return when (adapter?.getItemViewType(position)) {
-                                R.layout.catalogue_grid_item, null -> 1
+                                R.layout.manga_grid_item, null -> 1
                                 else -> spanCount
                             }
                         }

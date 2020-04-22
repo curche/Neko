@@ -203,10 +203,9 @@ class LibraryHeaderItem(
             )
 
             if (category.id == -1)
-                popup.menu.findItem(R.id.action_drag_and_drop).title =
-                    contentView.context.getString(
-                        R.string.category
-                    )
+                popup.menu.findItem(R.id.action_drag_and_drop).title = contentView.context.getString(
+                    R.string.category
+                )
 
             if (sortingMode != null && popup.menu is MenuBuilder) {
                 val m = popup.menu as MenuBuilder
@@ -227,12 +226,7 @@ class LibraryHeaderItem(
                 }
             )
             val s = SpannableString(currentItem?.title ?: "")
-            s.setSpan(
-                ForegroundColorSpan(itemView.context.getResourceColor(R.attr.colorPrimary)),
-                0,
-                s.length,
-                0
-            )
+            s.setSpan(ForegroundColorSpan(itemView.context.getResourceColor(android.R.attr.colorAccent)), 0, s.length, 0)
             currentItem?.title = s
 
             // Finally show the PopupMenu
@@ -241,7 +235,7 @@ class LibraryHeaderItem(
 
         private fun tintVector(resId: Int): Drawable? {
             return ContextCompat.getDrawable(itemView.context, resId)?.mutate()?.apply {
-                setTint(itemView.context.getResourceColor(R.attr.colorPrimary))
+                setTint(itemView.context.getResourceColor(android.R.attr.colorAccent))
             }
         }
 

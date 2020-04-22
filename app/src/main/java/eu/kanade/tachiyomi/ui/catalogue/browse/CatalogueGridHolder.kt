@@ -12,7 +12,7 @@ import eu.kanade.tachiyomi.data.glide.GlideApp
 import eu.kanade.tachiyomi.ui.library.LibraryCategoryAdapter
 import eu.kanade.tachiyomi.util.view.gone
 import eu.kanade.tachiyomi.widget.StateImageViewTarget
-import kotlinx.android.synthetic.main.catalogue_grid_item.*
+import kotlinx.android.synthetic.main.manga_grid_item.*
 import kotlinx.android.synthetic.main.unread_download_badge.*
 
 /**

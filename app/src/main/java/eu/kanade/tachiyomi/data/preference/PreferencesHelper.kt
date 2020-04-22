@@ -184,6 +184,10 @@ class PreferencesHelper(val context: Context) {
 
     fun libraryLayout() = rxPrefs.getInteger(Keys.libraryLayout, 1)
 
+    fun resetLibraryLayout() = {
+        prefs.edit().putInt(Keys.libraryLayout, 1).commit()
+    }
+
     fun gridSize() = rxPrefs.getInteger(Keys.gridSize, 1)
 
     fun alwaysShowSeeker() = rxPrefs.getBoolean("always_show_seeker", false)

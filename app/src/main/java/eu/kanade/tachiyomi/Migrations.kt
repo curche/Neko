@@ -23,6 +23,11 @@ object Migrations {
                     UpdaterJob.setupTask()
                 }
             }
+            if (oldVersion < 52) {
+                if (preferences.libraryLayout().get() == 0) {
+                    preferences.resetLibraryLayout()
+                }
+            }
             return true
         }
         return false

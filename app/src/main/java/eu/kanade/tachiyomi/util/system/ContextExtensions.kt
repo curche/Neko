@@ -1,5 +1,6 @@
 package eu.kanade.tachiyomi.util.system
 
+import android.annotation.SuppressLint
 import android.app.ActivityManager
 import android.app.Notification
 import android.app.NotificationManager
@@ -19,6 +20,10 @@ import androidx.annotation.StringRes
 import androidx.browser.customtabs.CustomTabsIntent
 import androidx.core.app.NotificationCompat
 import androidx.core.content.ContextCompat
+import com.mikepenz.iconics.IconicsDrawable
+import com.mikepenz.iconics.typeface.IIcon
+import com.mikepenz.iconics.utils.colorInt
+import com.mikepenz.iconics.utils.sizeDp
 import com.nononsenseapps.filepicker.FilePickerActivity
 import eu.kanade.tachiyomi.R
 import eu.kanade.tachiyomi.widget.CustomLayoutPickerActivity
@@ -97,6 +102,22 @@ fun Context.getResourceColor(@AttrRes resource: Int): Int {
  */
 fun Context.contextCompatColor(@ColorRes resource: Int): Int {
     return ContextCompat.getColor(this, resource)
+}
+
+/**
+ * Returns the color
+ *
+ * @param resource the attribute.
+ */
+@SuppressLint("ResourceType")
+fun Context.IconicsDrawable(icon: IIcon, size: Int = 24, color: Int = R.attr.colorPrimary, attributeColor: Boolean = true): IconicsDrawable {
+    return IconicsDrawable(this, icon).apply {
+        sizeDp = size
+        colorInt = when {
+            attributeColor -> getResourceColor(color)
+            else -> contextCompatColor(color)
+        }
+    }
 }
 
 /**

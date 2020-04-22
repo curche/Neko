@@ -1,7 +1,6 @@
 package eu.kanade.tachiyomi.ui.library
 
 import android.os.Bundle
-import android.view.View
 import android.view.ViewGroup
 import android.widget.CompoundButton
 import android.widget.RadioButton
@@ -12,7 +11,6 @@ import com.google.android.material.bottomsheet.BottomSheetDialog
 import eu.kanade.tachiyomi.R
 import eu.kanade.tachiyomi.data.preference.PreferencesHelper
 import eu.kanade.tachiyomi.data.preference.getOrDefault
-import eu.kanade.tachiyomi.util.system.dpToPx
 import eu.kanade.tachiyomi.util.view.setBottomEdge
 import eu.kanade.tachiyomi.util.view.setEdgeToEdge
 import eu.kanade.tachiyomi.util.view.visibleIf
@@ -20,7 +18,7 @@ import kotlinx.android.synthetic.main.display_bottom_sheet.*
 import uy.kohesive.injekt.injectLazy
 
 class DisplayBottomSheet(private val controller: LibraryController) : BottomSheetDialog
-    (controller.activity!!) {
+    (controller.activity!!, R.style.BottomSheetMenuTheme) {
 
     val activity = controller.activity!!
 
@@ -35,27 +33,8 @@ class DisplayBottomSheet(private val controller: LibraryController) : BottomShee
         // Use activity theme for this layout
         val view = activity.layoutInflater.inflate(R.layout.display_bottom_sheet, null)
         setContentView(view)
-
         sheetBehavior = BottomSheetBehavior.from(view.parent as ViewGroup)
         setEdgeToEdge(activity, view)
-        val height = activity.window.decorView.rootWindowInsets.systemWindowInsetBottom
-        sheetBehavior.peekHeight = 220.dpToPx + height
-
-        sheetBehavior.addBottomSheetCallback(object : BottomSheetBehavior.BottomSheetCallback() {
-            override fun onSlide(bottomSheet: View, progress: Float) {}
-
-            override fun onStateChanged(p0: View, state: Int) {
-                if (state == BottomSheetBehavior.STATE_EXPANDED) {
-                    sheetBehavior.skipCollapsed = true
-                }
-            }
-        })
-    }
-
-    override fun onStart() {
-        super.onStart()
-        sheetBehavior.skipCollapsed = true
-        sheetBehavior.state = BottomSheetBehavior.STATE_EXPANDED
     }
 
     /**

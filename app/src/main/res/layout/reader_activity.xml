@@ -43,9 +43,9 @@
 
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/toolbar"
+            style="@style/Widget.Neko.AppBar"
             android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            android:background="?colorPrimary" />
+            android:layout_height="?attr/actionBarSize" />
 
         <include layout="@layout/reader_chapters_sheet" />
 

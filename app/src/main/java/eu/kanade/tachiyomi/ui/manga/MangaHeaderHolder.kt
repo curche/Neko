@@ -21,8 +21,8 @@ import eu.kanade.tachiyomi.data.database.models.MangaImpl
 import eu.kanade.tachiyomi.data.glide.GlideApp
 import eu.kanade.tachiyomi.source.model.SManga
 import eu.kanade.tachiyomi.ui.base.holder.BaseFlexibleViewHolder
+import eu.kanade.tachiyomi.util.system.IconicsDrawable
 import eu.kanade.tachiyomi.util.system.getResourceColor
-import eu.kanade.tachiyomi.util.view.DrawableHelper
 import eu.kanade.tachiyomi.util.view.gone
 import eu.kanade.tachiyomi.util.view.invisible
 import eu.kanade.tachiyomi.util.view.resetStrokeColor
@@ -160,8 +160,8 @@ class MangaHeaderHolder(
         )
         with(favorite_button) {
             setImageDrawable(
-                DrawableHelper.standardIcon(
-                    context, when {
+                context.IconicsDrawable(
+                    when {
                         item.isLocked -> MaterialDesignDx.Icon.gmf_lock
                         item.manga.favorite -> CommunityMaterial.Icon2.cmd_heart as IIcon
                         else -> CommunityMaterial.Icon2.cmd_heart_outline as IIcon

@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/chapter_layout"
     android:layout_width="fill_parent"
-    android:layout_height="72dp">
+    android:layout_height="wrap_content">
 
     <FrameLayout
         android:id="@+id/right_view"
@@ -40,8 +40,8 @@
 
         <ImageView
             android:id="@+id/bookmark"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_gravity="start|center"
             android:layout_marginStart="21dp"
             tools:layout_height="24dp"
@@ -86,31 +86,36 @@
             android:layout_marginBottom="12dp"
             android:ellipsize="end"
             android:maxLines="1"
-            android:textSize="14sp"
+            android:textSize="12sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@id/download_button"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/chapter_title"
             tools:text="3 days ago • On page 45 • Scanlator" />
 
-        <ImageView
+        <com.mikepenz.iconics.view.IconicsImageView
             android:id="@+id/bookmark_star"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:visibility="gone"
-            android:layout_marginTop="-8dp"
             android:layout_marginStart="8dp"
-            android:layout_marginEnd="8dp"
-            tools:layout_height="12dp"
-            tools:layout_width="12dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            tools:layout_height="14dp"
+            tools:layout_width="14dp"
+            android:translationY="-3dp"
+            app:layout_constraintEnd_toStartOf="@+id/download_button"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:tint="@color/md_black_1000"
+            tools:visibility="visible"
+            app:iiv_size="14dp"
+            app:iiv_color="@color/neko_green"
+            app:iiv_icon="gmf_bookmark"
+            tools:src="@drawable/ic_open_in_webview_white_24dp" />
 
         <include
             layout="@layout/download_button"
             android:layout_width="32dp"
             android:layout_height="0dp"
-            android:layout_marginEnd="12dp"
+            android:layout_marginEnd="24dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />

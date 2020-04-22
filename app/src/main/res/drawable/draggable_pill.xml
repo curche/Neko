@@ -5,5 +5,5 @@
         android:height="4dp"
         android:width="50dp"/>
     <corners android:radius="20dp" />
-    <solid android:color="?attr/actionBarTintColor"/>
+    <solid android:color="?attr/colorPrimary"/>
 </shape>

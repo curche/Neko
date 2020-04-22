@@ -2,11 +2,10 @@
 <eu.kanade.tachiyomi.ui.download.DownloadBottomSheet xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    style="@style/BottomSheetMenuTheme"
     android:id="@+id/dl_bottom_sheet"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/bg_bottom_sheet_dialog_fragment"
-    android:backgroundTint="?android:attr/colorBackground"
     android:orientation="vertical"
     app:behavior_peekHeight="48sp"
     app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior">

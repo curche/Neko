@@ -4,12 +4,11 @@ import android.text.format.DateUtils
 import android.view.View
 import androidx.core.content.res.ResourcesCompat
 import com.mikepenz.iconics.typeface.library.community.material.CommunityMaterial
-import com.mikepenz.iconics.typeface.library.materialdesigndx.MaterialDesignDx
 import eu.kanade.tachiyomi.R
 import eu.kanade.tachiyomi.data.database.models.Manga
 import eu.kanade.tachiyomi.data.download.model.Download
 import eu.kanade.tachiyomi.ui.manga.MangaDetailsAdapter
-import eu.kanade.tachiyomi.util.view.DrawableHelper
+import eu.kanade.tachiyomi.util.system.IconicsDrawable
 import eu.kanade.tachiyomi.util.view.gone
 import kotlinx.android.synthetic.main.chapters_item.*
 import kotlinx.android.synthetic.main.download_button.*
@@ -43,7 +42,10 @@ class ChapterHolder(
         if (isLocked) download_button.gone()
         if (chapter.read) {
             download_button.alpha = .3f
-            bookmark_star.alpha = .3f
+            bookmark_star.alpha = .5f
+        } else {
+            download_button.alpha = 1f
+            bookmark_star.alpha = 1f
         }
 
         // Set correct text color
@@ -59,9 +61,6 @@ class ChapterHolder(
 
         if (chapter.bookmark && !isLocked) {
             bookmark_star.visibility = View.VISIBLE
-            bookmark_star.setImageDrawable(
-                DrawableHelper.standardIcon(view.context, MaterialDesignDx.Icon.gmf_bookmark, 12)
-            )
         } else {
             bookmark_star.visibility = View.GONE
         }
@@ -96,8 +95,7 @@ class ChapterHolder(
 
         if (front_view.translationX == 0f) {
             read.setImageDrawable(
-                DrawableHelper.standardIcon(
-                    read.context,
+                read.context.IconicsDrawable(
                     when {
                         item.read -> CommunityMaterial.Icon.cmd_eye_check
                         else -> CommunityMaterial.Icon.cmd_eye
@@ -106,8 +104,7 @@ class ChapterHolder(
             )
 
             bookmark.setImageDrawable(
-                DrawableHelper.standardIcon(
-                    read.context,
+                read.context.IconicsDrawable(
                     when {
                         item.bookmark -> CommunityMaterial.Icon.cmd_bookmark_off
                         else -> CommunityMaterial.Icon.cmd_bookmark
@@ -116,7 +113,14 @@ class ChapterHolder(
             )
         }
         //always have it tinted
-        chapter_scanlator.setTextColor(adapter.readColor)
+        chapter_scanlator.setTextColor(
+            when {
+                chapter.read -> adapter.readColor
+                else -> adapter.unreadColor
+            }
+        )
+        chapter_scanlator.typeface = ResourcesCompat.getFont(view.context, fontInt)
+
         chapter_scanlator.text = statuses.joinToString(" • ")
         notifyStatus(
             if (adapter.isSelected(adapterPosition)) Download.CHECKED else item.status,

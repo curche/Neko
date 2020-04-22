@@ -29,7 +29,7 @@ import kotlin.math.abs
  * Color filter sheet to toggle custom filter and brightness overlay.
  */
 class ReaderColorFilterSheet(activity: ReaderActivity) : BottomSheetDialog
-    (activity) {
+    (activity, R.style.BottomSheetMenuTheme) {
 
     private val preferences by injectLazy<PreferencesHelper>()
 

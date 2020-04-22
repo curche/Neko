@@ -8,8 +8,8 @@ import androidx.core.content.ContextCompat
 import com.mikepenz.iconics.typeface.library.materialdesigndx.MaterialDesignDx
 import eu.kanade.tachiyomi.R
 import eu.kanade.tachiyomi.data.download.model.Download
+import eu.kanade.tachiyomi.util.system.IconicsDrawable
 import eu.kanade.tachiyomi.util.system.getResourceColor
-import eu.kanade.tachiyomi.util.view.DrawableHelper
 import eu.kanade.tachiyomi.util.view.gone
 import eu.kanade.tachiyomi.util.view.visible
 import kotlinx.android.synthetic.main.download_button.view.*
@@ -77,7 +77,7 @@ class DownloadButton @JvmOverloads constructor(context: Context, attrs: Attribut
                 download_border.gone()
                 download_border.gone()
                 download_icon.setImageDrawable(
-                    DrawableHelper.standardIcon(context, MaterialDesignDx.Icon.gmf_arrow_downward, size = 14)
+                    context.IconicsDrawable(MaterialDesignDx.Icon.gmf_arrow_downward, size = 14)
                 )
                 download_icon.drawable.setTint(activeColor)
             }

@@ -28,7 +28,6 @@ class ExternalBottomSheet(private val controller: MangaDetailsController) : Bott
         // Use activity theme for this layout
         val view = activity.layoutInflater.inflate(R.layout.external_bottom_sheet, null)
         setContentView(view)
-
         sheetBehavior = BottomSheetBehavior.from(view.parent as ViewGroup)
         setEdgeToEdge(activity, view)
         val height = activity.window.decorView.rootWindowInsets.systemWindowInsetBottom

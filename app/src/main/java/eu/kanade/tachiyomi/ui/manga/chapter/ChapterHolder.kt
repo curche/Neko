@@ -2,12 +2,14 @@ package eu.kanade.tachiyomi.ui.manga.chapter
 
 import android.text.format.DateUtils
 import android.view.View
-import androidx.core.content.ContextCompat
 import androidx.core.content.res.ResourcesCompat
+import com.mikepenz.iconics.typeface.library.community.material.CommunityMaterial
+import com.mikepenz.iconics.typeface.library.materialdesigndx.MaterialDesignDx
 import eu.kanade.tachiyomi.R
 import eu.kanade.tachiyomi.data.database.models.Manga
 import eu.kanade.tachiyomi.data.download.model.Download
 import eu.kanade.tachiyomi.ui.manga.MangaDetailsAdapter
+import eu.kanade.tachiyomi.util.view.DrawableHelper
 import eu.kanade.tachiyomi.util.view.gone
 import kotlinx.android.synthetic.main.chapters_item.*
 import kotlinx.android.synthetic.main.download_button.*
@@ -39,19 +41,30 @@ class ChapterHolder(
         download_button.visibility = View.VISIBLE
 
         if (isLocked) download_button.gone()
-        if (chapter.read) download_button.alpha = .3f
+        if (chapter.read) {
+            download_button.alpha = .3f
+            bookmark_star.alpha = .3f
+        }
 
         // Set correct text color
         chapter_title.setTextColor(
             if (chapter.read && !isLocked) adapter.readColor else adapter.unreadColor
         )
         val fontInt = when {
-            chapter.bookmark && !isLocked -> R.font.metropolis_extra_bold
             chapter.read && !isLocked -> R.font.metropolis_regular
             else -> R.font.metropolis_medium
 
         }
         chapter_title.typeface = ResourcesCompat.getFont(view.context, fontInt)
+
+        if (chapter.bookmark && !isLocked) {
+            bookmark_star.visibility = View.VISIBLE
+            bookmark_star.setImageDrawable(
+                DrawableHelper.standardIcon(view.context, MaterialDesignDx.Icon.gmf_bookmark, 12)
+            )
+        } else {
+            bookmark_star.visibility = View.GONE
+        }
 
         val statuses = mutableListOf<String>()
 
@@ -83,19 +96,27 @@ class ChapterHolder(
 
         if (front_view.translationX == 0f) {
             read.setImageDrawable(
-                ContextCompat.getDrawable(
-                    read.context, if (item.read) R.drawable.ic_eye_off_24dp
-                    else R.drawable.ic_eye_24dp
+                DrawableHelper.standardIcon(
+                    read.context,
+                    when {
+                        item.read -> CommunityMaterial.Icon.cmd_eye_check
+                        else -> CommunityMaterial.Icon.cmd_eye
+                    }
                 )
             )
+
             bookmark.setImageDrawable(
-                ContextCompat.getDrawable(
-                    read.context, if (item.bookmark) R.drawable.ic_bookmark_off_24dp
-                    else R.drawable.ic_bookmark_24dp
+                DrawableHelper.standardIcon(
+                    read.context,
+                    when {
+                        item.bookmark -> CommunityMaterial.Icon.cmd_bookmark_off
+                        else -> CommunityMaterial.Icon.cmd_bookmark
+                    }
                 )
             )
         }
-        chapter_scanlator.setTextColor(if (chapter.read) adapter.readColor else adapter.unreadColor)
+        //always have it tinted
+        chapter_scanlator.setTextColor(adapter.readColor)
         chapter_scanlator.text = statuses.joinToString(" • ")
         notifyStatus(
             if (adapter.isSelected(adapterPosition)) Download.CHECKED else item.status,

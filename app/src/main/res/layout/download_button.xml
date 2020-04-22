@@ -40,9 +40,9 @@
     <ImageView
         android:id="@+id/download_icon"
         android:layout_gravity="center"
-        android:layout_width="30dp"
-        android:layout_height="30dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:background="@drawable/round_ripple"
         android:padding="5dp"
-        android:src="@drawable/ic_arrow_down_white_24dp" />
+        tools:src="@drawable/ic_arrow_down_white_24dp" />
 </eu.kanade.tachiyomi.ui.download.DownloadButton>

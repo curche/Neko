@@ -160,7 +160,7 @@ class MangaHeaderHolder(
         )
         with(favorite_button) {
             setImageDrawable(
-                DrawableHelper.standardIcon24(
+                DrawableHelper.standardIcon(
                     context, when {
                         item.isLocked -> MaterialDesignDx.Icon.gmf_lock
                         item.manga.favorite -> CommunityMaterial.Icon2.cmd_heart as IIcon

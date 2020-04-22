@@ -16,7 +16,7 @@ import eu.kanade.tachiyomi.util.view.setEdgeToEdge
 import kotlinx.android.synthetic.main.external_bottom_sheet.*
 
 class ExternalBottomSheet(private val controller: MangaDetailsController) : BottomSheetDialog
-    (controller.activity!!, R.style.BottomSheetDialogTheme) {
+    (controller.activity!!, R.style.BottomSheetMenuTheme) {
 
     val activity = controller.activity!!
 
@@ -63,7 +63,7 @@ class ExternalBottomSheet(private val controller: MangaDetailsController) : Bott
         external_recycler.layoutManager = gridLayoutManager
         external_recycler.adapter = fastAdapter
         external_recycler.setOnApplyWindowInsetsListener(RecyclerWindowInsetsListener)
-        
+
         itemAdapter.add(presenter.externalLinksList)
 
         fastAdapter.onClickListener = { _, _, item, _ ->

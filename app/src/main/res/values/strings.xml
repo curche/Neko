@@ -440,7 +440,7 @@
 
     <!-- General settings -->
     <string name="app_theme">App theme</string>
-    <string name="amoled_black">AMOLED Black</string>
+    <string name="dark_black">Dark Black</string>
     <string name="white_theme">Pure White</string>
     <string name="language">Language</string>
     <string name="system_default">System default</string>

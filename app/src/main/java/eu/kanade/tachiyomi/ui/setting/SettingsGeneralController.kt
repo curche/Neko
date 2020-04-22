@@ -25,7 +25,7 @@ class SettingsGeneralController : SettingsController() {
             entriesRes = arrayOf(
                 R.string.system_default,
                 R.string.white_theme,
-                R.string.amoled_black
+                R.string.dark_black
             )
             entryValues = listOf(1, 2, 3)
             defaultValue = 1

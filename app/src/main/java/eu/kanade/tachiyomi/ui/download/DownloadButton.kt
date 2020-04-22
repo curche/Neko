@@ -5,9 +5,11 @@ import android.content.Context
 import android.util.AttributeSet
 import android.widget.FrameLayout
 import androidx.core.content.ContextCompat
+import com.mikepenz.iconics.typeface.library.materialdesigndx.MaterialDesignDx
 import eu.kanade.tachiyomi.R
 import eu.kanade.tachiyomi.data.download.model.Download
 import eu.kanade.tachiyomi.util.system.getResourceColor
+import eu.kanade.tachiyomi.util.view.DrawableHelper
 import eu.kanade.tachiyomi.util.view.gone
 import eu.kanade.tachiyomi.util.view.visible
 import kotlinx.android.synthetic.main.download_button.view.*
@@ -72,8 +74,11 @@ class DownloadButton @JvmOverloads constructor(context: Context, attrs: Attribut
                 download_border.visible()
                 download_progress.gone()
                 download_progress_indeterminate.gone()
-                download_border.setImageDrawable(borderCircle)
-                download_border.drawable.setTint(activeColor)
+                download_border.gone()
+                download_border.gone()
+                download_icon.setImageDrawable(
+                    DrawableHelper.standardIcon(context, MaterialDesignDx.Icon.gmf_arrow_downward, size = 14)
+                )
                 download_icon.drawable.setTint(activeColor)
             }
             Download.QUEUE -> {

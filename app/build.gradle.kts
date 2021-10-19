@@ -273,7 +273,7 @@ dependencies {
     implementation("com.github.FunkyMuse.KAHelpers:kotlinextensions:3.0.5")
     implementation("com.github.skydoves:sandwich:1.2.1")
 
-    implementation("com.mikepenz:aboutlibraries:8.9.1")
+    implementation("com.mikepenz:aboutlibraries:8.9.4")
     debugImplementation("com.squareup.leakcanary:leakcanary-android:2.7")
 
 }

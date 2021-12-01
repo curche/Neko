@@ -225,7 +225,7 @@ dependencies {
     implementation("com.mikepenz:fastadapter-extensions-binding:$fastAdapterVersion")
     implementation("eu.davidea:flexible-adapter:5.1.0")
     implementation("eu.davidea:flexible-adapter-ui:1.0.0")
-    implementation("com.nononsenseapps:filepicker:2.5.2")
+    implementation("com.nononsenseapps:filepicker:4.2.1")
     implementation("com.nightlynexus.viewstatepageradapter:viewstatepageradapter:1.1.0")
     implementation("com.github.sephiroth74:NumberSlidingPicker:1.0.3")
     implementation("com.github.chrisbanes:PhotoView:2.3.0")

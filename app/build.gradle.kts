@@ -299,7 +299,7 @@ dependencies {
     implementation("com.github.skydoves:sandwich:1.2.1")
 
     implementation("com.mikepenz:aboutlibraries:8.9.4")
-    debugImplementation("com.squareup.leakcanary:leakcanary-android:2.7")
+    debugImplementation("com.squareup.leakcanary:leakcanary-android:2.8")
 
 }
 

@@ -256,7 +256,7 @@ dependencies {
     implementation("com.google.accompanist:accompanist-swiperefresh:$accompanistVersion")
 
 // Conductor
-    implementation("com.bluelinelabs:conductor:3.1.2")
+    implementation("com.bluelinelabs:conductor:3.1.3")
     implementation("com.github.tachiyomiorg:conductor-support-preference:3.0.0")
 
 // RxBindings

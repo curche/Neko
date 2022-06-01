@@ -252,7 +252,7 @@ dependencies {
     val composeVersion = "1.1.0-rc01"
     implementation("androidx.compose.ui:ui:$composeVersion")
     implementation("androidx.compose.runtime:runtime-livedata:$composeVersion")
-    implementation("androidx.paging:paging-compose:1.0.0-alpha14")
+    implementation("androidx.paging:paging-compose:1.0.0-alpha15")
     // Tooling support (Previews, etc.)
     implementation("androidx.compose.ui:ui-tooling:$composeVersion")
     // Foundation (Border, Background, Box, Image, Scroll, shapes, animations, etc.)
